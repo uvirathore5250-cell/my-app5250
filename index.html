@@ -33,46 +33,43 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
         #t1:checked ~ .main-view #home, #t2:checked ~ .main-view #amenities, #t3:checked ~ .main-view #membership, #t4:checked ~ .main-view #training { display: block; }
 
-        /* --- HOME SECTION (EXACT ORIGINAL DETAILS) --- */
+        /* --- HOME --- */
         .presale-hero { background: var(--neon); color: #000; padding: 40px; border-radius: 30px; text-align: center; margin-bottom: 30px; }
         .reveal-btn-main { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; cursor: pointer; margin: 15px 0; display: inline-block; font-weight: 900; }
-        
         .content-box { margin-bottom: 35px; border-left: 5px solid var(--neon); padding-left: 20px; }
         .content-box h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; color: #fff; }
         .content-box p { line-height: 1.6; color: #bbb; font-size: 15px; }
         .highlight { color: var(--neon); font-weight: 800; }
 
-        /* --- AMENITIES (FULL 10+6) --- */
+        /* --- AMENITIES --- */
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 25px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); }
-        .amenity-card span { font-size: 24px; display: block; }
         .amenity-card h4 { font-size: 11px; text-transform: uppercase; font-weight: 800; margin-top: 5px; }
 
-        /* --- MEMBERSHIP (6 MONTHS + PRICE REVEAL LOGIC) --- */
+        /* --- MEMBERSHIP (CLEAN REVEAL ON CLICK) --- */
         .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; perspective: 1000px; }
         .m-card { background: #111; border-radius: 25px; position: relative; overflow: hidden; padding: 3px; transition: 0.3s; cursor: pointer; }
+        
+        /* Neon border ONLY when active */
         .m-card.active::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--neon)); animation: rotateBorder 3s linear infinite; }
-        .m-card-inner { position: relative; background: #0a0a0a; border-radius: 22px; padding: 25px 15px; z-index: 1; height: 100%; text-align: center; }
         
+        .m-card-inner { position: relative; background: #0a0a0a; border-radius: 22px; padding: 30px 15px; z-index: 1; height: 100%; text-align: center; }
         .m-title { font-size: 10px; font-weight: 900; color: #555; letter-spacing: 2px; margin-bottom: 8px; }
-        .m-duration { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+        .m-duration { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 15px; }
         
-        .mrp-display { font-size: 18px; color: #888; font-weight: 700; margin-bottom: 15px; display: block; }
-        .m-card.active .mrp-display { text-decoration: line-through; color: #444; font-size: 14px; }
+        .mrp-display { font-size: 20px; color: var(--neon); font-weight: 800; transition: 0.3s; }
+        .m-card.active .mrp-display { text-decoration: line-through; color: #444; font-size: 14px; margin-bottom: 5px; }
 
-        .m-features { list-style: none; text-align: left; margin-bottom: 15px; border-top: 1px solid #222; padding-top: 10px; }
-        .m-features li { font-size: 10px; color: #777; margin-bottom: 5px; text-transform: uppercase; font-weight: 700; }
+        .m-features { list-style: none; text-align: left; margin: 20px 0; border-top: 1px solid #222; padding-top: 15px; }
+        .m-features li { font-size: 10px; color: #777; margin-bottom: 6px; text-transform: uppercase; font-weight: 700; }
         .m-features li::before { content: '✓'; color: var(--neon); margin-right: 5px; }
 
-        .unlock-btn { background: #1a1a1a; color: var(--neon); border: 1px solid #333; padding: 10px; border-radius: 10px; width: 100%; font-weight: 900; text-transform: uppercase; font-size: 11px; }
-        .m-card.active .unlock-btn { display: none; }
+        .offer-reveal { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .m-card.active .offer-reveal { max-height: 100px; opacity: 1; margin-top: 5px; padding: 12px; border: 1px dashed var(--neon); border-radius: 15px; background: rgba(146, 208, 80, 0.05); }
+        .offer-text { color: var(--neon); font-size: 30px; font-weight: 900; display: block; filter: drop-shadow(0 0 5px var(--neon-glow)); }
 
-        .offer-reveal { max-height: 0; opacity: 0; overflow: hidden; transition: 0.4s ease; }
-        .m-card.active .offer-reveal { max-height: 100px; opacity: 1; margin-top: 10px; padding: 10px; border: 1px dashed var(--neon); border-radius: 12px; background: rgba(146, 208, 80, 0.05); }
-        .offer-text { color: var(--neon); font-size: 28px; font-weight: 900; display: block; }
-
-        /* --- TRAINING (FULL ORIGINAL TABLE) --- */
+        /* --- TRAINING --- */
         .table-card { background: #111; padding: 20px; border-radius: 20px; border: 1px solid #222; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; min-width: 450px; }
         th { color: var(--neon); padding: 15px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; text-transform: uppercase; }
@@ -103,7 +100,7 @@
                 <p>Limited Time Grand Launch Offer</p>
                 <h1 style="font-size: 38px; font-weight: 900;">OPENING OFFER</h1>
                 <div class="reveal-btn-main" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'">Click to Reveal Price</div>
-                <h2 style="display:none; font-size: 50px;">₹19,999/-</h2>
+                <h2 style="display:none; font-size: 50px; font-weight: 900;">₹19,999/-</h2>
                 <p>Annual Membership | Full 24/7 Access | All Facilities</p>
             </div>
             
@@ -149,41 +146,37 @@
         </section>
 
         <section id="membership">
-            <h2 style="text-align: center; margin-bottom: 25px;">SELECT YOUR PLAN</h2>
+            <h2 style="text-align: center; margin-bottom: 25px; font-weight: 900;">CLICK ON PLANS TO <span style="color:var(--neon)">REVEAL OFFER</span></h2>
             <div class="m-grid">
                 <div class="m-card" onmousemove="tilt(event, this)" onmouseleave="resetTilt(this)" onclick="this.classList.toggle('active')">
                     <div class="m-card-inner">
                         <div class="m-title">STARTER</div><div class="m-duration">1 MONTH</div>
-                        <span class="mrp-display">MRP: ₹5,999</span>
+                        <div class="mrp-display">MRP: ₹5,999</div>
                         <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam</li></ul>
-                        <button class="unlock-btn">Unlock Offer</button>
                         <div class="offer-reveal"><span class="offer-text">₹4,999/-</span></div>
                     </div>
                 </div>
                 <div class="m-card" onmousemove="tilt(event, this)" onmouseleave="resetTilt(this)" onclick="this.classList.toggle('active')">
                     <div class="m-card-inner">
                         <div class="m-title">VALUE</div><div class="m-duration">3 MONTHS</div>
-                        <span class="mrp-display">MRP: ₹14,999</span>
+                        <div class="mrp-display">MRP: ₹14,999</div>
                         <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam</li></ul>
-                        <button class="unlock-btn">Unlock Offer</button>
                         <div class="offer-reveal"><span class="offer-text">₹9,999/-</span></div>
                     </div>
                 </div>
                 <div class="m-card" onmousemove="tilt(event, this)" onmouseleave="resetTilt(this)" onclick="this.classList.toggle('active')">
                     <div class="m-card-inner">
                         <div class="m-title">PRO</div><div class="m-duration">6 MONTHS</div>
-                        <span class="mrp-display">MRP: ₹19,999</span>
+                        <div class="mrp-display">MRP: ₹19,999</div>
                         <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam</li></ul>
-                        <button class="unlock-btn">Unlock Offer</button>
                         <div class="offer-reveal"><span class="offer-text">₹13,999/-</span></div>
                     </div>
                 </div>
                 <div class="m-card" onmousemove="tilt(event, this)" onmouseleave="resetTilt(this)" onclick="this.classList.toggle('active')">
                     <div class="m-card-inner">
                         <div class="m-title">ELITE</div><div class="m-duration">12 MONTHS</div>
-                        <span class="mrp-display">MRP: ₹24,999</span>
+                        <div class="mrp-display">MRP: ₹24,999</div>
                         <ul class="m-features"><li>24/7 Access</li><li>All Facilities</li><li>Steam</li></ul>
-                        <button class="unlock-btn">Unlock Offer</button>
                         <div class="offer-reveal"><span class="offer-text">₹19,999/-</span></div>
                     </div>
                 </div>
@@ -191,7 +184,7 @@
         </section>
 
         <section id="training">
-            <h2 style="margin-bottom: 20px;">PERSONAL TRAINING LEVELS</h2>
+            <h2 style="margin-bottom: 20px; font-weight: 900;">PERSONAL TRAINING <span style="color:var(--neon)">LEVELS</span></h2>
             <div class="table-card">
                 <table>
                     <thead><tr><th>DURATION</th><th>LEVEL 1</th><th>LEVEL 2</th><th>LEVEL 3</th></tr></thead>
