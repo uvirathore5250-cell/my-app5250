@@ -20,8 +20,7 @@
 
         * { 
             margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; 
-            -webkit-user-select: none; 
-            user-select: none;
+            -webkit-user-select: none; user-select: none;
             -webkit-touch-callout: none; 
         }
         
@@ -39,7 +38,7 @@
         .nav-btn {
             background: #1a1a1a; color: #777; padding: 8px 14px; border-radius: 20px;
             cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase;
-            border: 1px solid #333; white-space: nowrap; transition: 0.2s;
+            border: 1px solid #333; white-space: nowrap; transition: 0.3s;
         }
 
         #t1:checked ~ header nav label[for="t1"],
@@ -53,13 +52,8 @@
         }
 
         .main-view { margin-top: 70px; height: calc(100vh - 70px); overflow-y: auto; padding: 20px; }
-        
-        section { display: none; animation: sectionFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); max-width: 900px; margin: 0 auto; }
-        
-        @keyframes sectionFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        section { display: none; animation: sectionFadeIn 0.5s ease; max-width: 900px; margin: 0 auto; }
+        @keyframes sectionFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         #t1:checked ~ .main-view #home,
         #t2:checked ~ .main-view #amenities,
@@ -67,27 +61,15 @@
         #t4:checked ~ .main-view #training { display: block; }
 
         .presale-hero {
-            background: var(--neon-glossy);
-            background-size: 200% auto;
-            animation: flow 4s linear infinite;
-            color: #000; padding: 35px; border-radius: 20px;
-            text-align: center; margin-bottom: 40px; position: relative;
+            background: var(--neon-glossy); background-size: 200% auto; animation: flow 4s linear infinite;
+            color: #000; padding: 35px; border-radius: 20px; text-align: center; margin-bottom: 40px;
         }
-        .presale-hero h1 { font-size: 38px; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
+        .presale-hero h1 { font-size: 38px; font-weight: 900; text-transform: uppercase; }
         .old-price { text-decoration: line-through; opacity: 0.7; font-size: 20px; font-weight: bold; }
         
         #reveal-check { display: none; }
         .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; }
-        
-        .price-display { 
-            font-size: 60px; font-weight: 900; display: none; margin: 15px 0; 
-            animation: pricePopup 1.2s infinite ease-in-out;
-        }
-        @keyframes pricePopup {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(0,0,0,0.2); }
-        }
-
+        .price-display { font-size: 60px; font-weight: 900; display: none; margin: 15px 0; }
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
 
@@ -99,6 +81,26 @@
         .usp-card { background: #161616; padding: 25px; border-radius: 20px; border: 1px solid #222; }
         .usp-card h4 { color: var(--neon); margin-bottom: 10px; font-size: 15px; text-transform: uppercase; }
 
+        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
+        
+        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .amenity-card { 
+            background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; 
+            text-align: center; border-bottom: 5px solid var(--neon); 
+            cursor: pointer; transition: 0.2s; touch-action: manipulation;
+        }
+
+        /* CLICK SELECTION STATE */
+        .amenity-card.selected {
+            background: var(--neon) !important;
+            border-bottom-color: #5b8a2a !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(146, 208, 80, 0.5);
+        }
+
+        .amenity-card span { font-size: 24px; display: block; pointer-events: none; }
+        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; pointer-events: none; }
+
         .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         .m-card { background: #111; padding: 30px 15px; border-radius: 20px; border: 1px solid #222; text-align: center; position: relative; }
         .m-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 5px; }
@@ -108,39 +110,21 @@
         .m-features li::before { content: '✓'; color: var(--neon); }
 
         .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        table { width: 100%; border-collapse: collapse; }
         th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; }
         td { padding: 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
-
-        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        
-        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
-        .amenity-card { 
-            background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; 
-            text-align: center; border-bottom: 5px solid var(--neon); 
-            cursor: pointer; position: relative; transition: 0.1s;
-            touch-action: manipulation;
-        }
-        
-        /* NEW: Class added via JavaScript for Instant feedback */
-        .amenity-card.active-tap {
-            background: var(--neon) !important;
-            transform: scale(0.94);
-            box-shadow: 0 0 25px var(--neon);
-        }
-
-        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; pointer-events: none; }
-        .amenity-card span { font-size: 24px; pointer-events: none; }
     </style>
 </head>
-<body ontouchstart=""> <input type="radio" name="tabs" id="t1" checked>
+<body>
+
+    <input type="radio" name="tabs" id="t1" checked>
     <input type="radio" name="tabs" id="t2">
     <input type="radio" name="tabs" id="t3">
     <input type="radio" name="tabs" id="t4">
 
     <header>
-        <div class="logo">TAISO<span style="color:var(--neon)">.</span> PREMIUM</div>
+        <div class="logo">TAISO PREMIUM</div>
         <nav>
             <label for="t1" class="nav-btn">Home</label>
             <label for="t2" class="nav-btn">Amenities</label>
@@ -154,21 +138,20 @@
             <div class="presale-hero">
                 <p>Limited Time Grand Launch Offer</p>
                 <h1>Opening Offer</h1>
-                <div class="old-price">Regular Price: ₹24,999</div>
+                <div class="old-price">₹24,999</div>
                 <input type="checkbox" id="reveal-check">
                 <div class="price-reveal-box">
                     <label for="reveal-check" class="reveal-label">Click to Reveal Price</label>
                     <div class="price-display">₹19,999/-</div>
                 </div>
-                <p>Annual Membership | Full 24/7 Access | All Facilities</p>
             </div>
             <div class="about-section">
                 <div class="green-border-box">
                     <h2>From Seawoods & Panvel to Baner</h2>
-                    <p>After transforming thousands of lives in <b>Seawoods and Panvel</b>, TAISO Premium is now bringing its elite fitness experience to <b>Baner, Pune.</b></p>
+                    <p>After transforming thousands of lives in Seawoods and Panvel, TAISO Premium is now in Baner.</p>
                 </div>
                 <div class="usp-grid">
-                    <div class="usp-card"><h4>Ultra-Premium Gear</h4><p>Experience advanced cardio and strength machines.</p></div>
+                    <div class="usp-card"><h4>Ultra-Premium Gear</h4><p>Advanced cardio and strength machines.</p></div>
                     <div class="usp-card"><h4>24/7 Elite Access</h4><p>Train whenever inspiration strikes.</p></div>
                 </div>
             </div>
@@ -176,59 +159,63 @@
 
         <section id="amenities">
             <h2 style="text-align: center; margin-bottom: 10px;">PREMIUM <span style="color:var(--neon)">AMENITIES</span></h2>
-            
             <div class="cat-label">Included in Membership</div>
             <div class="amenity-grid">
                 <div class="amenity-card"><span>⚡</span><h4>Cardio & CrossFit</h4></div>
-                <div class="amenity-card"><span>💪</span><h4>Functional Training Classes</h4></div>
-                <div class="amenity-card"><span>🔥</span><h4>3-Day Free PT Trial</h4></div>
-                <div class="amenity-card"><span>📋</span><h4>Customized Workout Plan</h4></div>
+                <div class="amenity-card"><span>💪</span><h4>Functional Training</h4></div>
+                <div class="amenity-card"><span>🔥</span><h4>3-Day PT Trial</h4></div>
+                <div class="amenity-card"><span>📋</span><h4>Workout Plan</h4></div>
                 <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam & Shower</h4></div>
                 <div class="amenity-card"><span>🔓</span><h4>Common Lockers</h4></div>
                 <div class="amenity-card"><span>🚗</span><h4>Open Parking</h4></div>
-                <div class="amenity-card"><span>📊</span><h4>BMI & Fitness Test</h4></div>
+                <div class="amenity-card"><span>📊</span><h4>BMI Test</h4></div>
                 <div class="amenity-card"><span>💃</span><h4>Zumba</h4></div>
                 <div class="amenity-card"><span>🧘</span><h4>Yoga</h4></div>
             </div>
-
             <div class="cat-label" style="color:#ffcc00; border-left-color:#ffcc00;">Paid Services</div>
             <div class="amenity-grid">
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧊</span><h4>Ice Bath Sessions</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧊</span><h4>Ice Bath</h4></div>
                 <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>☕</span><h4>Cafe Aera</h4></div>
                 <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🥊</span><h4>MMA Zone</h4></div>
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>👤</span><h4>Personally PT Studio</h4></div>
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🤸</span><h4>Trampoline Workout</h4></div>
                 <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧘</span><h4>Pilates</h4></div>
             </div>
         </section>
 
-        </div>
+        <section id="membership">
+            <h2 style="text-align: center; margin-bottom: 30px;">PACKAGES</h2>
+            <div class="m-grid">
+                <div class="m-card">
+                    <div class="m-title">1 MONTH</div><div class="m-price">₹5,999</div>
+                    <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
+                </div>
+                <div class="m-card" style="border-color: var(--neon);">
+                    <div class="m-title">12 MONTHS</div><div class="m-price">₹24,999</div>
+                    <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="training">
+            <h2 style="margin-bottom: 15px;">TRAINING <span style="color:var(--neon)">PRICES</span></h2>
+            <div class="table-card">
+                <table>
+                    <thead><tr><th>DURATION</th><th>LEVEL 1</th><th>LEVEL 2</th><th>LEVEL 3</th></tr></thead>
+                    <tbody>
+                        <tr><td>1 Month</td><td class="price-text">10,000</td><td class="price-text">12,000</td><td class="price-text">15,000</td></tr>
+                        <tr><td>3 Months</td><td class="price-text">27,000</td><td class="price-text">32,000</td><td class="price-text">40,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 
     <script>
-        const cards = document.querySelectorAll('.amenity-card');
-
-        cards.forEach(card => {
-            // Jab touch shuru ho (Ungli rakhte hi)
-            card.addEventListener('touchstart', () => {
-                card.classList.add('active-tap');
+        // Sirf amenities cards ko target kiya hai
+        const amenityCards = document.querySelectorAll('.amenity-card');
+        amenityCards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('selected');
             });
-
-            // Jab touch khatam ho (Ungli uthate hi)
-            card.addEventListener('touchend', () => {
-                setTimeout(() => {
-                    card.classList.remove('active-tap');
-                }, 100); // Thoda sa delay taaki flash dikhe
-            });
-
-            // Agar touch beech mein cancel ho jaye (jaise scroll karne par)
-            card.addEventListener('touchcancel', () => {
-                card.classList.remove('active-tap');
-            });
-            
-            // For Desktop Mouse click
-            card.addEventListener('mousedown', () => card.classList.add('active-tap'));
-            card.addEventListener('mouseup', () => card.classList.remove('active-tap'));
-            card.addEventListener('mouseleave', () => card.classList.remove('active-tap'));
         });
     </script>
 </body>
