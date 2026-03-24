@@ -20,11 +20,11 @@
 
         * { 
             margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; 
-            /* 1. Isse text selection disable ho jayega poori site par */
             -webkit-user-select: none; 
             user-select: none;
-            /* 2. Isse mobile par long-press menu nahi aayega */
             -webkit-touch-callout: none; 
+            /* Smooth transitions for all elements */
+            transition: all 0.2s ease;
         }
         
         body { background: var(--bg); color: var(--text); overflow: hidden; }
@@ -41,7 +41,7 @@
         .nav-btn {
             background: #1a1a1a; color: #777; padding: 8px 14px; border-radius: 20px;
             cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase;
-            border: 1px solid #333; white-space: nowrap; transition: 0.3s ease;
+            border: 1px solid #333; white-space: nowrap;
         }
 
         #t1:checked ~ header nav label[for="t1"],
@@ -79,7 +79,7 @@
         .old-price { text-decoration: line-through; opacity: 0.7; font-size: 20px; font-weight: bold; }
         
         #reveal-check { display: none; }
-        .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; transition: 0.3s; }
+        .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; }
         
         .price-display { 
             font-size: 60px; font-weight: 900; display: none; margin: 15px 0; 
@@ -117,10 +117,25 @@
 
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
         
+        /* UPDATED: Click/Tap Effect for Amenity Boxes */
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
-        .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
-        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
-        .amenity-card span { font-size: 24px; }
+        .amenity-card { 
+            background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; 
+            text-align: center; border-bottom: 5px solid var(--neon); 
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Highlight on Click/Tap */
+        .amenity-card:active {
+            background: var(--neon);
+            transform: scale(0.95);
+            box-shadow: 0 0 20px var(--neon);
+        }
+
+        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; pointer-events: none; }
+        .amenity-card span { font-size: 24px; pointer-events: none; }
     </style>
 </head>
 <body>
