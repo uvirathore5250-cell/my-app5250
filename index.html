@@ -106,19 +106,32 @@
         .m-features li { font-size: 11px; color: #aaa; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; font-weight: 600; text-transform: uppercase; }
         .m-features li::before { content: '✓'; color: var(--neon); }
 
-        /* OFFER STYLING */
+        /* PREMIUM OFFER REVEAL STYLING */
         .offer-toggle { 
-            background: #222; color: var(--neon); border: 1px solid var(--neon); 
-            padding: 10px; border-radius: 12px; font-size: 11px; font-weight: 900; 
-            cursor: pointer; text-transform: uppercase; width: 100%; transition: 0.3s;
+            background: transparent; color: var(--neon); border: 2px solid var(--neon); 
+            padding: 12px; border-radius: 30px; font-size: 11px; font-weight: 900; 
+            cursor: pointer; text-transform: uppercase; width: 100%; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        
         .offer-box { 
-            display: none; background: var(--neon); color: #000; 
-            margin-top: 12px; padding: 15px; border-radius: 12px; 
-            animation: sectionFadeIn 0.3s ease; 
+            max-height: 0; opacity: 0; overflow: hidden;
+            background: rgba(146, 208, 80, 0.1); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(146, 208, 80, 0.3);
+            margin-top: 0; padding: 0 15px; border-radius: 15px; 
+            transition: all 0.5s ease;
+            transform: scale(0.9);
         }
-        .offer-box span { font-size: 10px; font-weight: 800; display: block; text-transform: uppercase; }
-        .offer-box b { font-size: 22px; font-weight: 900; }
+        
+        .offer-box.active {
+            max-height: 150px; opacity: 1; padding: 15px; margin-top: 15px;
+            transform: scale(1);
+            border-color: var(--neon);
+            box-shadow: 0 0 20px rgba(146, 208, 80, 0.2);
+        }
+
+        .offer-box span { font-size: 10px; font-weight: 800; display: block; text-transform: uppercase; color: var(--neon); }
+        .offer-box b { font-size: 26px; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon); }
 
         .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -227,25 +240,25 @@
                 <div class="m-card">
                     <div class="m-title">1 MONTH</div><div class="m-price">₹5,999</div>
                     <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
-                    <div class="offer-toggle" onclick="toggleOffer(this)">View Offer</div>
+                    <div class="offer-toggle" onclick="toggleOffer(this)">View Special Offer</div>
                     <div class="offer-box"><span>Current Offer</span><b>₹4,999/-</b></div>
                 </div>
                 <div class="m-card">
                     <div class="m-title">3 MONTHS</div><div class="m-price">₹14,999</div>
                     <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
-                    <div class="offer-toggle" onclick="toggleOffer(this)">View Offer</div>
+                    <div class="offer-toggle" onclick="toggleOffer(this)">View Special Offer</div>
                     <div class="offer-box"><span>Current Offer</span><b>₹9,999/-</b></div>
                 </div>
                 <div class="m-card">
                     <div class="m-title">6 MONTHS</div><div class="m-price">₹19,999</div>
                     <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
-                    <div class="offer-toggle" onclick="toggleOffer(this)">View Offer</div>
+                    <div class="offer-toggle" onclick="toggleOffer(this)">View Special Offer</div>
                     <div class="offer-box"><span>Current Offer</span><b>₹13,999/-</b></div>
                 </div>
                 <div class="m-card" style="border-color: var(--neon);">
                     <div class="m-title">12 MONTHS</div><div class="m-price">₹24,999</div>
                     <ul class="m-features"><li>24/7 Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
-                    <div class="offer-toggle" onclick="toggleOffer(this)">View Offer</div>
+                    <div class="offer-toggle" onclick="toggleOffer(this)">View Special Offer</div>
                     <div class="offer-box"><span>Current Offer</span><b>₹19,999/-</b></div>
                 </div>
             </div>
@@ -268,25 +281,24 @@
     </div>
 
     <script>
-        // Amenities selection
         document.querySelectorAll('.amenity-card').forEach(card => {
             card.addEventListener('click', function() { this.classList.toggle('selected'); });
         });
 
-        // Offer reveal logic
         function toggleOffer(btn) {
             const box = btn.nextElementSibling;
-            if (box.style.display === "block") {
-                box.style.display = "none";
-                btn.innerText = "View Offer";
-                btn.style.background = "#222";
-                btn.style.color = "var(--neon)";
-            } else {
-                box.style.display = "block";
+            box.classList.toggle('active');
+            
+            if (box.classList.contains('active')) {
                 btn.innerText = "Hide Offer";
-                btn.style.background = "#ff4444";
-                btn.style.color = "white";
-                btn.style.borderColor = "#ff4444";
+                btn.style.background = "var(--neon)";
+                btn.style.color = "#000";
+                btn.style.transform = "scale(0.95)";
+            } else {
+                btn.innerText = "View Special Offer";
+                btn.style.background = "transparent";
+                btn.style.color = "var(--neon)";
+                btn.style.transform = "scale(1)";
             }
         }
     </script>
