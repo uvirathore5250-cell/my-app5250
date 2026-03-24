@@ -108,9 +108,12 @@
         .price-text { color: var(--neon); font-weight: 800; }
 
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
-        .amenity-card { background: #fff; color: #000; padding: 15px 5px; border-radius: 12px; text-align: center; border-bottom: 4px solid var(--neon); transition: 0.3s; }
-        .amenity-card h4 { font-size: 11px; text-transform: uppercase; margin-top: 5px; }
+        
+        /* UPDATED: Larger Amenity Boxes */
+        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
+        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
+        .amenity-card span { font-size: 24px; }
     </style>
 </head>
 <body>
@@ -170,18 +173,13 @@
             
             <div class="cat-label">Included in Membership</div>
             <div class="amenity-grid">
-                <div class="amenity-card"><span>✅</span><h4>Cardio</h4></div>
-                <div class="amenity-card"><span>✅</span><h4>CrossFit</h4></div>
-                <div class="amenity-card"><span>🏋🏻</span><h4>Weight Training</h4></div>
-                <div class="amenity-card"><span>✅</span><h4>Functional Training</h4></div>
+                <div class="amenity-card"><span>⚡</span><h4>Cardio & CrossFit</h4></div>
                 <div class="amenity-card"><span>💪</span><h4>Functional Training Classes</h4></div>
-                <div class="amenity-card"><span>✅</span><h4>Strength Training</h4></div>
-                <div class="amenity-card"><span>✅</span><h4>3-Day Free PT Trial</h4></div>
-                <div class="amenity-card"><span>✅</span><h4>Workout Plan</h4></div>
+                <div class="amenity-card"><span>🔥</span><h4>3-Day Free PT Trial</h4></div>
+                <div class="amenity-card"><span>📋</span><h4>Customized Workout Plan</h4></div>
                 <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam & Shower</h4></div>
                 <div class="amenity-card"><span>🔓</span><h4>Common Lockers</h4></div>
                 <div class="amenity-card"><span>🚗</span><h4>Open Parking</h4></div>
-                <div class="amenity-card"><span>✅</span><h4>Stretching Zone</h4></div>
                 <div class="amenity-card"><span>📊</span><h4>BMI & Fitness Test</h4></div>
                 <div class="amenity-card"><span>💃</span><h4>Zumba</h4></div>
                 <div class="amenity-card"><span>🧘</span><h4>Yoga</h4></div>
