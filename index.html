@@ -18,7 +18,15 @@
             100% { background-position: 200% 0; }
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; 
+            /* 1. Isse text selection disable ho jayega poori site par */
+            -webkit-user-select: none; 
+            user-select: none;
+            /* 2. Isse mobile par long-press menu nahi aayega */
+            -webkit-touch-callout: none; 
+        }
+        
         body { background: var(--bg); color: var(--text); overflow: hidden; }
 
         input[type="radio"] { display: none; }
@@ -109,7 +117,6 @@
 
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
         
-        /* UPDATED: Larger Amenity Boxes */
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
         .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
