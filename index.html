@@ -13,13 +13,20 @@
             --text: #eee; 
         }
 
+        /* Nav & Hero Animation */
         @keyframes flow {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
 
+        /* Running Neon Border Animation */
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--text); overflow: hidden; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
         input[type="radio"] { display: none; }
 
@@ -60,6 +67,7 @@
         #t3:checked ~ .main-view #membership,
         #t4:checked ~ .main-view #training { display: block; }
 
+        /* HERO */
         .presale-hero {
             background: var(--neon-glossy);
             background-size: 200% auto;
@@ -85,6 +93,7 @@
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
 
+        /* HOME CONTENT */
         .about-section h2 { font-size: 32px; font-weight: 900; margin-bottom: 15px; color: #fff; }
         .about-section p { color: #bbb; line-height: 1.8; font-size: 16px; margin-bottom: 25px; }
         .green-border-box { border-left: 5px solid var(--neon); padding-left: 25px; margin-bottom: 40px; }
@@ -93,22 +102,57 @@
         .usp-card { background: #161616; padding: 25px; border-radius: 20px; border: 1px solid #222; }
         .usp-card h4 { color: var(--neon); margin-bottom: 10px; font-size: 15px; text-transform: uppercase; }
 
-        .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .m-card { background: #111; padding: 30px 15px; border-radius: 20px; border: 1px solid #222; text-align: center; position: relative; }
+        /* MEMBERSHIP (UPDATED FOR RUNNING BORDER) */
+        .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        
+        /* Container for running border */
+        .m-card-container {
+            position: relative;
+            padding: 3px; /* border thickness */
+            border-radius: 23px; /* card radius + padding */
+            overflow: hidden;
+            background: #1a1a1a; /* border base color */
+        }
+        
+        /* The running neon line */
+        .m-card-container::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, var(--neon));
+            animation: borderFlow 4s linear infinite;
+        }
+
+        /* Special base for 12 months container */
+        .m-card-container.popular::before {
+            background: conic-gradient(transparent, #ff4444, transparent, var(--neon)); /* dual color for popular */
+        }
+
+        .m-card { 
+            position: relative;
+            background: #111; 
+            padding: 30px 15px; 
+            border-radius: 20px; 
+            text-align: center; 
+            z-index: 1; /* content above border */
+        }
+        
         .m-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 5px; }
         .m-price { font-size: 32px; font-weight: 900; color: var(--neon); margin-bottom: 15px; }
         .m-features { list-style: none; text-align: left; border-top: 1px solid #222; padding-top: 15px; }
         .m-features li { font-size: 11px; color: #aaa; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; font-weight: 600; text-transform: uppercase; }
         .m-features li::before { content: '✓'; color: var(--neon); }
 
+        /* TRAINING */
         .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; }
         td { padding: 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
 
+        /* AMENITIES (SAB SAME) */
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
         .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
@@ -193,22 +237,30 @@
         <section id="membership">
             <h2 style="text-align: center; margin-bottom: 30px;">MEMBERSHIP <span style="color:var(--neon)">PACKAGES</span></h2>
             <div class="m-grid">
-                <div class="m-card">
-                    <div class="m-title">1 MONTH</div><div class="m-price">₹5,999</div>
-                    <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                <div class="m-card-container">
+                    <div class="m-card">
+                        <div class="m-title">1 MONTH</div><div class="m-price">₹5,999</div>
+                        <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                    </div>
                 </div>
-                <div class="m-card">
-                    <div class="m-title">3 MONTHS</div><div class="m-price">₹14,999</div>
-                    <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                <div class="m-card-container">
+                    <div class="m-card">
+                        <div class="m-title">3 MONTHS</div><div class="m-price">₹14,999</div>
+                        <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                    </div>
                 </div>
-                <div class="m-card">
-                    <div class="m-title">6 MONTHS</div><div class="m-price">₹19,999</div>
-                    <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                <div class="m-card-container">
+                    <div class="m-card">
+                        <div class="m-title">6 MONTHS</div><div class="m-price">₹19,999</div>
+                        <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                    </div>
                 </div>
-                <div class="m-card" style="border-color: var(--neon);">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--neon); color: #000; padding: 4px 15px; border-radius: 5px; font-size: 10px; font-weight: 900;">MOST POPULAR</div>
-                    <div class="m-title">12 MONTHS</div><div class="m-price">₹24,999</div>
-                    <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                <div class="m-card-container popular">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--neon); color: #000; padding: 4px 15px; border-radius: 5px; font-size: 10px; font-weight: 900; z-index: 10;">MOST POPULAR</div>
+                    <div class="m-card">
+                        <div class="m-title">12 MONTHS</div><div class="m-price">₹24,999</div>
+                        <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li><li>Cardio</li><li>Strength</li></ul>
+                    </div>
                 </div>
             </div>
         </section>
