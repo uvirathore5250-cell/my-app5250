@@ -70,18 +70,21 @@
         }
         .presale-hero h1 { font-size: 38px; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
         
-        .seats-alert {
+        /* NEW: Urgency Label */
+        .urgency-label {
             background: #000; color: #ff3333; padding: 5px 15px; border-radius: 50px;
             font-weight: 900; font-size: 12px; display: inline-block; margin-bottom: 15px;
-            border: 1px solid #ff3333;
+            border: 1px solid #ff3333; animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         #reveal-check { display: none; }
         .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; transition: 0.3s; }
         
-        .price-display { 
-            font-size: 60px; font-weight: 900; display: none; margin: 15px 0; 
-        }
+        .price-display { font-size: 60px; font-weight: 900; display: none; margin: 15px 0; }
 
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
@@ -90,21 +93,17 @@
         .about-section p { color: #bbb; line-height: 1.8; font-size: 16px; margin-bottom: 25px; }
         .green-border-box { border-left: 5px solid var(--neon); padding-left: 25px; margin-bottom: 40px; }
         
-        /* Membership List Table Style */
         .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; }
         th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; text-transform: uppercase; }
         td { padding: 15px 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
 
-        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); }
         .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
 
-        .premium-footer { padding: 40px 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; opacity: 0.6; }
-        
+        .premium-footer { padding: 60px 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
         .whatsapp-float {
             position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; text-decoration: none;
@@ -118,7 +117,7 @@
     <input type="radio" name="tabs" id="t3">
     <input type="radio" name="tabs" id="t4">
 
-    <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float">📲</a>
+    <a href="https://wa.me/918850119894" class="whatsapp-float">📲</a>
 
     <header>
         <div class="logo">TAISO<span style="color:var(--neon)">.</span> PREMIUM</div>
@@ -134,7 +133,7 @@
 
         <section id="home">
             <div class="presale-hero">
-                <div class="seats-alert">⚠️ ONLY 17 SEATS AVAILABLE</div>
+                <div class="urgency-label">⚠️ ONLY 17 SEATS AVAILABLE</div>
                 <p>Limited Time Grand Launch Offer</p>
                 <h1>Opening Offer</h1>
                 <input type="checkbox" id="reveal-check">
@@ -149,10 +148,6 @@
                 <div class="green-border-box">
                     <h2>From Seawoods & Panvel to Baner</h2>
                     <p>After transforming thousands of lives in <b>Seawoods and Panvel</b>, TAISO Premium is now bringing its elite fitness experience to <b>Baner, Pune.</b></p>
-                </div>
-                <div class="green-border-box">
-                    <h2>Our Motive</h2>
-                    <p>Our goal in Baner is to provide a <b>Best-in-Class Premium Service</b>. We believe that fitness should be luxurious and result-driven.</p>
                 </div>
             </div>
         </section>
@@ -174,16 +169,12 @@
             <div class="table-card">
                 <table>
                     <thead>
-                        <tr>
-                            <th>DURATION</th>
-                            <th>BENEFITS</th>
-                            <th>PRICE</th>
-                        </tr>
+                        <tr><th>DURATION</th><th>BENEFITS</th><th>PRICE</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>1 Month</td><td>Gym + Steam + BMI</td><td class="price-text">₹5,999</td></tr>
                         <tr><td>3 Months</td><td>Gym + Classes + Steam</td><td class="price-text">₹12,999</td></tr>
-                        <tr><td>6 Months</td><td>Gym + Diet + All Access</td><td class="price-text">₹17,999</td></tr>
+                        <tr><td>6 Months</td><td>Gym + Diet Plan + Access</td><td class="price-text">₹17,999</td></tr>
                         <tr style="background: #1a1a1a;"><td>12 Months</td><td>24/7 Access + All Facilities</td><td class="price-text">₹24,999</td></tr>
                     </tbody>
                 </table>
@@ -207,8 +198,8 @@
         </section>
 
         <div class="premium-footer">
-            <div class="logo" style="margin-bottom: 10px;">TAISO PREMIUM</div>
-            <p style="font-size: 12px;">BANER • SEAWOODS • PANVEL</p>
+            <div class="logo" style="margin-bottom: 15px; opacity: 0.5;">TAISO PREMIUM</div>
+            <p style="font-size: 11px; letter-spacing: 2px; color: #555;">BANER ROAD, PUNE • SEAWOODS • PANVEL</p>
         </div>
     </div>
 
