@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,11 @@
             --text: #eee; 
         }
 
-        @keyframes flow { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes flow {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background: var(--bg); color: var(--text); overflow-x: hidden; }
 
@@ -24,81 +29,94 @@
             z-index: 1000; border-bottom: 2px solid var(--neon);
             display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-weight: 900; letter-spacing: 2px; color: #fff; font-size: 18px; }
+        .logo { font-weight: 900; letter-spacing: 2px; color: #fff; font-size: 20px; }
         nav { display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; }
         .nav-btn {
             background: #1a1a1a; color: #777; padding: 8px 14px; border-radius: 20px;
-            cursor: pointer; font-size: 9px; font-weight: 800; text-transform: uppercase;
+            cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase;
             border: 1px solid #333; white-space: nowrap; transition: 0.3s ease;
         }
 
-        /* Tab Switching Logic */
         #t1:checked ~ header nav label[for="t1"],
         #t2:checked ~ header nav label[for="t2"],
         #t3:checked ~ header nav label[for="t3"],
-        #t4:checked ~ header nav label[for="t4"],
-        #t5:checked ~ header nav label[for="t5"] {
-            background: var(--neon-glossy); background-size: 200% auto; animation: flow 3s linear infinite;
+        #t4:checked ~ header nav label[for="t4"] {
+            background: var(--neon-glossy);
+            background-size: 200% auto;
+            animation: flow 3s linear infinite;
             color: #000; border-color: var(--neon); transform: scale(1.05);
         }
 
         .main-view { margin-top: 70px; height: calc(100vh - 70px); overflow-y: auto; padding: 20px; }
-        section { display: none; animation: sectionFadeIn 0.5s ease; max-width: 900px; margin: 0 auto; }
-        @keyframes sectionFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        section { display: none; animation: sectionFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1); max-width: 900px; margin: 0 auto; }
+        
+        @keyframes sectionFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         #t1:checked ~ .main-view #home,
         #t2:checked ~ .main-view #amenities,
         #t3:checked ~ .main-view #membership,
-        #t4:checked ~ .main-view #training,
-        #t5:checked ~ .main-view #comparison { display: block; }
+        #t4:checked ~ .main-view #training { display: block; }
 
-        /* --- HOME PAGE FIXED POPUP & RED BOX --- */
-        .presale-hero { 
-            background: var(--neon-glossy); color: #000; padding: 40px 20px; 
-            border-radius: 20px; text-align: center; margin-bottom: 25px;
-            background-size: 200% auto; animation: flow 4s linear infinite;
+        .presale-hero {
+            background: var(--neon-glossy); background-size: 200% auto;
+            animation: flow 4s linear infinite; color: #000; padding: 35px; border-radius: 20px;
+            text-align: center; margin-bottom: 40px; position: relative;
         }
-        .presale-hero h1 { font-size: 35px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+        .presale-hero h1 { font-size: 38px; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
         
         #reveal-check { display: none; }
-        .reveal-label { 
-            background: #000; color: var(--neon); padding: 12px 25px; 
-            border-radius: 50px; font-weight: 900; cursor: pointer; 
-            display: inline-block; margin: 15px 0; border: 2px solid #000;
-        }
-        .price-display { 
-            font-size: 55px; font-weight: 900; display: none; 
-            margin: 10px 0; animation: bounce 0.5s ease; 
-        }
-        @keyframes bounce { 0% {transform: scale(0.5);} 80% {transform: scale(1.1);} 100% {transform: scale(1);} }
+        .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; transition: 0.3s; }
         
-        /* Magic Logic for Reveal */
-        #reveal-check:checked ~ .reveal-label { display: none !important; }
-        #reveal-check:checked ~ .price-display { display: block !important; }
+        .price-display { font-size: 60px; font-weight: 900; display: none; margin: 15px 0; animation: pricePopup 1.2s infinite ease-in-out; }
+        @keyframes pricePopup { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        .seats-banner { 
-            background: #ff0000; color: white; padding: 15px; 
-            border-radius: 15px; text-align: center; font-weight: 900; 
-            margin-bottom: 30px; border: 3px dashed #fff;
-            animation: pulse 1.5s infinite;
+        #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
+        #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
+
+        .seats-banner {
+            background: #ff3333; color: white; padding: 15px; border-radius: 15px;
+            text-align: center; font-weight: 900; margin-bottom: 25px;
+            border: 2px dashed white; animation: pulse 2s infinite;
         }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
-        /* --- REST OF THE PAGES (UNCHANGED) --- */
-        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .amenity-card { background: #fff; color: #000; padding: 20px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); }
-        .amenity-card h4 { font-size: 12px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
-
-        .table-card { background: var(--card); padding: 15px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; min-width: 400px; }
-        th { color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #333; }
-        td { padding: 12px; border-bottom: 1px solid #1a1a1a; font-size: 13px; font-weight: 600; }
+        .about-section h2 { font-size: 32px; font-weight: 900; margin-bottom: 15px; color: #fff; }
+        .about-section p { color: #bbb; line-height: 1.8; font-size: 16px; margin-bottom: 25px; }
+        .green-border-box { border-left: 5px solid var(--neon); padding-left: 25px; margin-bottom: 40px; }
+        
+        /* TABLE STYLES */
+        .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; min-width: 400px; }
+        th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; text-transform: uppercase; }
+        td { padding: 12px; border-bottom: 1px solid #111; font-size: 13px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
 
-        .plan-card { background: var(--card); border: 1px solid #222; border-radius: 15px; padding: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
+        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
+        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
+        .amenity-card span { font-size: 24px; }
+
+        .gym-status-badge { display: flex; align-items: center; gap: 10px; background: #161616; padding: 10px 20px; border-radius: 50px; width: fit-content; margin: 0 auto 20px; border: 1px solid #222; }
+        .status-dot { height: 10px; width: 10px; background: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366; }
         
-        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; text-decoration: none; }
+        .plan-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .plan-card {
+            background: var(--card); border: 1px solid #222; border-radius: 15px;
+            padding: 20px; display: flex; justify-content: space-between; align-items: center;
+            position: relative; overflow: hidden;
+        }
+        .plan-info h3 { font-size: 18px; color: var(--neon); text-transform: uppercase; }
+        .plan-info p { font-size: 12px; color: #777; margin-top: 4px; }
+        .plan-price { font-size: 22px; font-weight: 900; color: #fff; }
+        
+        .premium-footer { background: linear-gradient(to bottom, #111, #000); padding: 40px 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; }
     </style>
 </head>
 <body>
@@ -107,7 +125,6 @@
     <input type="radio" name="tabs" id="t2">
     <input type="radio" name="tabs" id="t3">
     <input type="radio" name="tabs" id="t4">
-    <input type="radio" name="tabs" id="t5">
 
     <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float">📲</a>
 
@@ -118,87 +135,136 @@
             <label for="t2" class="nav-btn">Amenities</label>
             <label for="t3" class="nav-btn">Memberships</label>
             <label for="t4" class="nav-btn">Training</label>
-            <label for="t5" class="nav-btn">Why US?</label>
         </nav>
     </header>
 
     <div class="main-view">
+
         <section id="home">
+            <div class="gym-status-badge">
+                <div class="status-dot"></div>
+                <span style="font-size: 11px; font-weight: 800; color: #888;">CURRENT STATUS: <span style="color: #fff;">NOT CROWDED</span></span>
+            </div>
+
             <div class="presale-hero">
-                <p style="font-weight: 800; letter-spacing: 1px;">LIMITED TIME LAUNCH OFFER</p>
-                <h1>Grand Opening</h1>
-                
+                <p>Limited Time Grand Launch Offer</p>
+                <h1>Opening Offer</h1>
                 <input type="checkbox" id="reveal-check">
-                <label for="reveal-check" class="reveal-label">CLICK TO REVEAL PRICE</label>
-                <div class="price-display">₹19,999/-</div>
-                
-                <p style="margin-top: 10px; font-weight: 600;">Annual Membership | All Access</p>
+                <div class="price-reveal-box">
+                    <label for="reveal-check" class="reveal-label">Click to Reveal Price</label>
+                    <div class="price-display">₹19,999/-</div>
+                </div>
+                <p>Annual Membership | Full 24/7 Access</p>
             </div>
 
             <div class="seats-banner">
-                ⚠️ ONLY 17 SEATS LEFT AT THIS PRICE! ⚠️
+                ⚠️ ONLY 17 SEATS AVAILABLE ONLY ⚠️<br>
+                <span style="font-size: 12px; font-weight: normal;">Book Your Slot Before Prices Go Up!</span>
             </div>
 
-            <div style="border-left: 5px solid var(--neon); padding-left: 20px; margin-top: 30px;">
-                <h2 style="font-size: 28px;">Baner, Pune Launch</h2>
-                <p style="color:#bbb; margin-top:10px; line-height: 1.6;">Bringing our elite fitness legacy from Seawoods & Panvel to the heart of Baner. Experience the most aesthetic gym ever.</p>
+            <div class="about-section">
+                <div class="green-border-box">
+                    <h2>From Seawoods & Panvel to Baner</h2>
+                    <p>After transforming thousands of lives in <b>Seawoods and Panvel</b>, TAISO Premium is now bringing its elite fitness experience to <b>Baner, Pune.</b></p>
+                </div>
             </div>
         </section>
 
         <section id="amenities">
+            <h2 style="text-align: center; margin-bottom: 10px;">PREMIUM <span style="color:var(--neon)">AMENITIES</span></h2>
+            
             <div class="cat-label">Included in Membership</div>
             <div class="amenity-grid">
                 <div class="amenity-card"><span>⚡</span><h4>Cardio & CrossFit</h4></div>
-                <div class="amenity-card"><span>💪</span><h4>Functional</h4></div>
+                <div class="amenity-card"><span>💪</span><h4>Functional Training</h4></div>
                 <div class="amenity-card"><span>📋</span><h4>Workout Plan</h4></div>
-                <div class="amenity-card"><span>🔥</span><h4>3-Day PT Trial</h4></div>
+                <div class="amenity-card"><span>🔥</span><h4>3-Day Free PT Trial</h4></div>
                 <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam & Shower</h4></div>
-                <div class="amenity-card"><span>📊</span><h4>BMI Test</h4></div>
+                <div class="amenity-card"><span>📊</span><h4>BMI & Fitness Test</h4></div>
                 <div class="amenity-card"><span>🧘</span><h4>Yoga & Zumba</h4></div>
             </div>
-            <div class="cat-label" style="color:#ffcc00; border-color:#ffcc00;">Paid Services</div>
+
+            <div class="cat-label" style="color:#ffcc00; border-left-color:#ffcc00;">Paid Services</div>
             <div class="amenity-grid">
-                <div class="amenity-card" style="border-color:#ffcc00;"><span>🧊</span><h4>Ice Bath</h4></div>
-                <div class="amenity-card" style="border-color:#ffcc00;"><span>🥊</span><h4>MMA Zone</h4></div>
-                <div class="amenity-card" style="border-color:#ffcc00;"><span>☕</span><h4>Nutrition Cafe</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧊</span><h4>Ice Bath Sessions</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🥊</span><h4>MMA Zone</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🤸</span><h4>Trampoline</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧘</span><h4>Pilates</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>☕</span><h4>Nutrition Cafe</h4></div>
             </div>
         </section>
 
         <section id="membership">
-            <div class="plan-card"><div class="plan-info"><h3>1 Month</h3></div><div class="plan-price">₹5,999</div></div>
-            <div class="plan-card"><div class="plan-info"><h3>3 Months</h3></div><div class="plan-price">₹12,999</div></div>
-            <div class="plan-card"><div class="plan-info"><h3>6 Months</h3></div><div class="plan-price">₹17,999</div></div>
-            <div class="plan-card" style="border-color: var(--neon);"><div class="plan-info"><h3>12 Months</h3></div><div class="plan-price">₹24,999</div></div>
+            <h2 style="text-align: center; margin-bottom: 25px;">MEMBERSHIP <span style="color:var(--neon)">PLANS</span></h2>
+            <div class="plan-grid">
+                <div class="plan-card">
+                    <div class="plan-info"><h3>1 Month</h3><p>Gym Access + Steam</p></div>
+                    <div class="plan-price">₹5,999</div>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-info"><h3>3 Months</h3><p>Gym + BMI + Steam</p></div>
+                    <div class="plan-price">₹12,999</div>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-info"><h3>6 Months</h3><p>Gym + All Access Facilities</p></div>
+                    <div class="plan-price">₹17,999</div>
+                </div>
+                <div class="plan-card" style="border-color: var(--neon);">
+                    <div class="plan-info"><h3>12 Months</h3><p>Full 24/7 Access + All Facilities</p></div>
+                    <div class="plan-price">₹24,999</div>
+                </div>
+            </div>
         </section>
 
         <section id="training">
-            <h2 style="text-align:center; margin-bottom:20px;">PERSONAL TRAINING</h2>
+            <h2 style="margin-bottom: 25px; text-align: center;">PERSONAL <span style="color:var(--neon)">TRAINING</span></h2>
             <div class="table-card">
                 <table>
-                    <thead><tr><th>DURATION</th><th>LEVEL 1</th><th>LEVEL 2</th><th>LEVEL 3</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th>DURATION</th>
+                            <th>LEVEL 1</th>
+                            <th>LEVEL 2</th>
+                            <th>LEVEL 3</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>1 Month</td><td class="price-text">₹10,000</td><td class="price-text">₹12,000</td><td class="price-text">₹15,000</td></tr>
-                        <tr><td>3 Months</td><td class="price-text">₹27,000</td><td class="price-text">₹32,000</td><td class="price-text">₹40,000</td></tr>
-                        <tr><td>6 Months</td><td class="price-text">₹50,000</td><td class="price-text">₹60,000</td><td class="price-text">₹75,000</td></tr>
-                        <tr style="background:#1a1a1a;"><td>12 Months</td><td class="price-text">₹90,000</td><td class="price-text">₹100,000</td><td class="price-text">₹120,000</td></tr>
+                        <tr>
+                            <td>1 Month</td>
+                            <td class="price-text">₹10,000</td>
+                            <td class="price-text">₹12,000</td>
+                            <td class="price-text">₹15,000</td>
+                        </tr>
+                        <tr>
+                            <td>3 Months</td>
+                            <td class="price-text">₹27,000</td>
+                            <td class="price-text">₹32,000</td>
+                            <td class="price-text">₹40,000</td>
+                        </tr>
+                        <tr>
+                            <td>6 Months</td>
+                            <td class="price-text">₹50,000</td>
+                            <td class="price-text">₹60,000</td>
+                            <td class="price-text">₹75,000</td>
+                        </tr>
+                        <tr style="background: #1a1a1a;">
+                            <td>12 Months</td>
+                            <td class="price-text">₹90,000</td>
+                            <td class="price-text">₹100,000</td>
+                            <td class="price-text">₹120,000</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
+            <p style="text-align: center; color: #777; font-size: 11px;">*Prices are subject to coach availability and transformation goals.</p>
         </section>
 
-        <section id="comparison">
-            <h2 style="text-align:center; margin-bottom:20px;">THE TAISO DIFFERENCE</h2>
-            <div class="table-card">
-                <table>
-                    <thead><tr><th>FEATURE</th><th>OTHERS</th><th style="color:var(--neon)">TAISO</th></tr></thead>
-                    <tbody>
-                        <tr><td>Access</td><td>6AM - 10PM</td><td style="color:var(--neon)">24/7 Access</td></tr>
-                        <tr><td>Recovery</td><td>Shower only</td><td style="color:var(--neon)">Ice Bath & Steam</td></tr>
-                        <tr><td>Crowd</td><td>Overcrowded</td><td style="color:var(--neon)">Limited Entries</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <div class="premium-footer">
+            <p style="font-size: 14px; color: #888;">BANER • SEAWOODS • PANVEL</p>
+            <p style="font-size: 10px; color: #333; margin-top: 10px;">© 2026 TAISO PREMIUM FITNESS.</p>
+        </div>
+
     </div>
+
 </body>
 </html>
