@@ -1,129 +1,255 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAISO Premium - Baner Launch</title>
+<title>TAISO Premium - Baner</title>
+
 <style>
-:root{--neon:#92d050;--neon-glossy:linear-gradient(90deg,#92d050 0%,#d4ffaa 50%,#92d050 100%);--bg:#050505;--card:#121212;--text:#eee}
-@keyframes flow{0%{background-position:-200% 0}100%{background-position:200% 0}}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:var(--bg);color:var(--text);overflow:hidden}
-input[type="radio"]{display:none}
-header{background:#000;padding:15px;position:fixed;top:0;width:100%;z-index:1000;border-bottom:2px solid var(--neon);display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;letter-spacing:2px;color:#fff;font-size:20px}
-nav{display:flex;gap:5px;overflow-x:auto}
-.nav-btn{background:#1a1a1a;color:#777;padding:8px 14px;border-radius:20px;cursor:pointer;font-size:10px;font-weight:800;text-transform:uppercase;border:1px solid #333;white-space:nowrap;transition:.3s}
-#t1:checked~header nav label[for="t1"],#t2:checked~header nav label[for="t2"],#t3:checked~header nav label[for="t3"],#t4:checked~header nav label[for="t4"]{background:var(--neon-glossy);background-size:200% auto;animation:flow 3s linear infinite;color:#000;border-color:var(--neon);transform:scale(1.05)}
-.main-view{margin-top:70px;height:calc(100vh - 70px);overflow-y:auto;padding:20px}
-section{display:none;animation:fade .5s ease;max-width:900px;margin:0 auto}
-@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-#t1:checked~.main-view #home,#t2:checked~.main-view #amenities,#t3:checked~.main-view #membership,#t4:checked~.main-view #training{display:block}
-.presale-hero{background:var(--neon-glossy);background-size:200% auto;animation:flow 4s linear infinite;color:#000;padding:35px;border-radius:20px;text-align:center;margin-bottom:40px}
-.presale-hero h1{font-size:38px;font-weight:900}
-.old-price{text-decoration:line-through;opacity:.7;font-size:20px}
-.reveal-label{background:#000;color:var(--neon);padding:12px 25px;border-radius:50px;font-weight:900;cursor:pointer}
-.price-display{font-size:60px;font-weight:900;display:none;animation:pop 1.2s infinite ease-in-out}
-@keyframes pop{50%{transform:scale(1.1)}}
-#reveal-check{display:none}
-#reveal-check:checked~.price-reveal-box .reveal-label{display:none}
-#reveal-check:checked~.price-reveal-box .price-display{display:block}
-.cta-btn{background:#000;color:var(--neon);padding:15px 30px;border-radius:30px;font-weight:900;border:2px solid #000;cursor:pointer;margin-top:15px}
-.about-section h2{font-size:30px;margin-bottom:10px}
-.about-section p{color:#bbb;line-height:1.7}
-.green-border-box{border-left:5px solid var(--neon);padding-left:20px;margin-bottom:25px}
-.usp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.usp-card{background:#161616;padding:20px;border-radius:15px}
-.cat-label{color:var(--neon);font-weight:900;margin:20px 0 10px}
-.amenity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px}
-.amenity-card{background:#fff;color:#000;padding:20px;border-radius:15px;text-align:center;border-bottom:5px solid var(--neon);font-weight:800}
-.m-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
-.m-card{background:#111;padding:25px;border-radius:15px;text-align:center;position:relative}
-.m-price{font-size:28px;color:var(--neon)}
-.table-card{background:var(--card);padding:20px;border-radius:10px;margin-bottom:20px}
+:root{
+--neon:#92d050;
+--bg:#040404;
+--glass:rgba(255,255,255,0.05);
+--border:rgba(255,255,255,0.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{
+background:radial-gradient(circle at top,#0a0a0a,#000);
+color:#fff;
+overflow:hidden;
+}
+
+/* NAV */
+input{display:none}
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:15px 25px;
+backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.5);
+border-bottom:1px solid var(--border);
+z-index:1000;
+}
+.logo{font-weight:900;letter-spacing:2px}
+nav{display:flex;gap:8px}
+.nav-btn{
+padding:8px 16px;
+border-radius:20px;
+font-size:11px;
+background:var(--glass);
+cursor:pointer;
+transition:.3s;
+}
+.nav-btn:hover{
+background:var(--neon);
+color:#000;
+}
+
+/* ACTIVE TAB */
+#t1:checked~header label[for="t1"],
+#t2:checked~header label[for="t2"],
+#t3:checked~header label[for="t3"],
+#t4:checked~header label[for="t4"]{
+background:var(--neon);
+color:#000;
+}
+
+/* MAIN */
+.main{
+margin-top:70px;
+height:calc(100vh - 70px);
+overflow-y:auto;
+padding:20px;
+}
+section{display:none;animation:fade .5s}
+@keyframes fade{from{opacity:0;transform:translateY(30px)}to{opacity:1}}
+
+#t1:checked~.main #home,
+#t2:checked~.main #amenities,
+#t3:checked~.main #plans,
+#t4:checked~.main #training{display:block}
+
+/* HERO */
+.hero{
+background:linear-gradient(135deg,#92d05020,#ffffff10);
+backdrop-filter:blur(20px);
+border:1px solid var(--border);
+padding:40px;
+border-radius:20px;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+.hero::before{
+content:"";
+position:absolute;
+width:300px;height:300px;
+background:var(--neon);
+filter:blur(120px);
+top:-100px;left:-100px;
+opacity:.2;
+}
+.price{
+font-size:55px;
+font-weight:900;
+color:var(--neon);
+animation:pulse 1.2s infinite;
+}
+@keyframes pulse{50%{transform:scale(1.1)}}
+
+.reveal{
+background:#000;
+border:1px solid var(--neon);
+color:var(--neon);
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+margin-top:15px;
+display:inline-block;
+}
+
+/* CTA */
+.cta{
+margin-top:20px;
+padding:15px 30px;
+border-radius:30px;
+border:none;
+background:var(--neon);
+color:#000;
+font-weight:900;
+cursor:pointer;
+transition:.3s;
+}
+.cta:hover{transform:scale(1.08)}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:20px;
+}
+.card{
+background:var(--glass);
+border:1px solid var(--border);
+padding:20px;
+border-radius:15px;
+text-align:center;
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px #92d05055;
+}
+
+/* MEMBERSHIP */
+.plan{
+background:var(--glass);
+border:1px solid var(--border);
+padding:25px;
+border-radius:15px;
+text-align:center;
+position:relative;
+}
+.plan h3{margin-bottom:10px}
+.plan .price{font-size:30px}
+
+/* TABLE */
+.table{
+background:var(--glass);
+border:1px solid var(--border);
+border-radius:10px;
+padding:20px;
+margin-top:15px;
+}
 table{width:100%;border-collapse:collapse}
-td,th{padding:10px;border-bottom:1px solid #222}
-.price-text{color:var(--neon);font-weight:800}
+td{padding:10px;border-bottom:1px solid #222}
+.highlight{color:var(--neon);font-weight:800}
 </style>
 </head>
+
 <body>
-<input type="radio" name="tabs" id="t1" checked>
-<input type="radio" name="tabs" id="t2">
-<input type="radio" name="tabs" id="t3">
-<input type="radio" name="tabs" id="t4">
+
+<input type="radio" name="tab" id="t1" checked>
+<input type="radio" name="tab" id="t2">
+<input type="radio" name="tab" id="t3">
+<input type="radio" name="tab" id="t4">
+
 <header>
-<div class="logo">TAISO PREMIUM</div>
+<div class="logo">TAISO ⚡ PREMIUM</div>
 <nav>
 <label for="t1" class="nav-btn">Home</label>
 <label for="t2" class="nav-btn">Amenities</label>
-<label for="t3" class="nav-btn">Memberships</label>
+<label for="t3" class="nav-btn">Plans</label>
 <label for="t4" class="nav-btn">Training</label>
 </nav>
 </header>
-<div class="main-view">
+
+<div class="main">
+
 <section id="home">
-<div class="presale-hero">
-<p>Limited Time Grand Launch Offer</p>
-<h1>Opening Offer</h1>
-<div class="old-price">₹24,999</div>
-<input type="checkbox" id="reveal-check">
-<div class="price-reveal-box">
-<label for="reveal-check" class="reveal-label">Unlock Launch Price 🔥</label>
-<div class="price-display">₹19,999</div>
+<div class="hero">
+<h1>Baner Launch Offer</h1>
+<p style="opacity:.7">Limited Access for First 100 Members</p>
+
+<label class="reveal" onclick="document.getElementById('price').style.display='block';this.style.display='none'">
+Unlock Price 🔥
+</label>
+
+<div id="price" class="price" style="display:none;">₹19,999</div>
+
+<button class="cta">JOIN NOW</button>
 </div>
-<p style="margin-top:10px;font-weight:700;">⚠️ Only for First 100 Members</p>
-<button class="cta-btn">JOIN NOW / BOOK VISIT</button>
-</div>
-<div class="about-section">
-<div class="green-border-box">
-<h2>From Seawoods & Panvel to Baner</h2>
-<p>This is not just a gym — this is a premium fitness lifestyle built for those who refuse average.</p>
-</div>
-<div class="usp-grid">
-<div class="usp-card">Ultra Premium Equipment</div>
-<div class="usp-card">24/7 Access</div>
-<div class="usp-card">Expert Trainers</div>
-<div class="usp-card">Steam & Recovery</div>
-</div>
+
+<div class="grid">
+<div class="card">24/7 Access</div>
+<div class="card">Luxury Equipment</div>
+<div class="card">Steam & Recovery</div>
+<div class="card">Elite Trainers</div>
 </div>
 </section>
+
 <section id="amenities">
-<h2>PREMIUM AMENITIES</h2>
-<div class="cat-label">ALL INCLUDED IN MEMBERSHIP</div>
-<p style="color:#aaa;font-size:12px;">Cardio • CrossFit • Functional Training • Yoga • Zumba • Steam • Locker • Parking • Fitness Test</p>
-<div class="amenity-grid">
-<div class="amenity-card">Cardio</div>
-<div class="amenity-card">CrossFit</div>
-<div class="amenity-card">Workout Plan</div>
-<div class="amenity-card">Steam</div>
-<div class="amenity-card">Zumba</div>
-<div class="amenity-card">Yoga</div>
+<h2>Included</h2>
+<div class="grid">
+<div class="card">Cardio</div>
+<div class="card">CrossFit</div>
+<div class="card">Yoga</div>
+<div class="card">Zumba</div>
 </div>
-<div class="cat-label" style="color:#ffcc00;">UPGRADE SERVICES (OPTIONAL)</div>
-<div class="amenity-grid">
-<div class="amenity-card" style="border-bottom-color:#ffcc00;">Ice Bath</div>
-<div class="amenity-card" style="border-bottom-color:#ffcc00;">MMA</div>
-<div class="amenity-card" style="border-bottom-color:#ffcc00;">Pilates</div>
+
+<h2 style="margin-top:20px;color:#ffcc00;">Upgrade</h2>
+<div class="grid">
+<div class="card">Ice Bath</div>
+<div class="card">MMA</div>
+<div class="card">Pilates</div>
 </div>
 </section>
-<section id="membership">
-<h2>MEMBERSHIP PACKAGES</h2>
-<div class="m-grid">
-<div class="m-card"><div>1 Month</div><div class="m-price">₹5,999</div></div>
-<div class="m-card"><div>3 Months</div><div class="m-price">₹14,999</div></div>
-<div class="m-card"><div style="background:#ffcc00;position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:5px;">BEST VALUE</div><div>6 Months</div><div class="m-price">₹19,999</div></div>
-<div class="m-card"><div style="background:var(--neon);position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:5px;">POPULAR</div><div>12 Months</div><div class="m-price">₹24,999</div></div>
+
+<section id="plans">
+<div class="grid">
+<div class="plan"><h3>1 Month</h3><div class="price">₹5999</div></div>
+<div class="plan"><h3>3 Month</h3><div class="price">₹14999</div></div>
+<div class="plan"><h3>6 Month ⭐</h3><div class="price">₹19999</div></div>
+<div class="plan"><h3>12 Month 🔥</h3><div class="price">₹24999</div></div>
 </div>
 </section>
+
 <section id="training">
-<h2>PERSONAL TRAINING</h2>
-<div class="table-card">
+<div class="table">
 <table>
-<tr><td>1 Month</td><td class="price-text">₹10,000</td></tr>
-<tr><td>3 Month</td><td class="price-text">₹27,000</td></tr>
-<tr><td>6 Month</td><td class="price-text">₹50,000</td></tr>
+<tr><td>1 Month</td><td class="highlight">₹10000</td></tr>
+<tr><td>3 Month</td><td class="highlight">₹27000</td></tr>
+<tr><td>6 Month</td><td class="highlight">₹50000</td></tr>
 </table>
 </div>
 </section>
+
 </div>
+
 </body>
 </html>
