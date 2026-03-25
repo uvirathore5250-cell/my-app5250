@@ -6,181 +6,137 @@
 <title>TAISO Premium - Baner Launch</title>
 
 <style>
-:root{--neon:#92d050;--bg:#050505;--glass:rgba(255,255,255,0.05);--border:#222;--text:#eee}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:radial-gradient(circle at top,#0a0a0a,#000);color:var(--text);overflow:hidden}
-
-/* TABS */
-input[type="radio"]{display:none}
-
-header{
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-padding:15px;
-position:fixed;
-width:100%;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid var(--border);
-z-index:1000;
+:root { 
+--neon: #92d050; 
+--bg: #050505; 
+--card: #121212; 
+--text: #eee; 
 }
 
-.logo{font-weight:900;letter-spacing:2px}
-nav{display:flex;gap:6px;overflow-x:auto}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+body { background: var(--bg); color: var(--text); overflow:hidden; }
 
-.nav-btn{
-background:var(--glass);
-color:#888;
+/* 🔥 STICKY TOP BAR */
+.top-bar{
+position:fixed;
+top:0;
+width:100%;
+background:var(--neon);
+color:#000;
+text-align:center;
+padding:6px;
+font-size:12px;
+font-weight:900;
+z-index:2000;
+}
+
+/* HEADER */
+header {
+background: #000;
+padding: 15px;
+position: fixed;
+top:28px;
+width: 100%;
+z-index: 1000;
+border-bottom: 2px solid var(--neon);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo { font-weight:900; letter-spacing:2px; }
+nav { display:flex; gap:5px; overflow-x:auto; }
+
+.nav-btn {
+background:#1a1a1a;
+color:#777;
 padding:8px 14px;
 border-radius:20px;
 cursor:pointer;
 font-size:10px;
 font-weight:800;
-border:1px solid var(--border);
-transition:.3s;
-white-space:nowrap;
-}
-
-.nav-btn:hover{background:var(--neon);color:#000}
-
-/* ACTIVE */
-#t1:checked ~ header label[for="t1"],
-#t2:checked ~ header label[for="t2"],
-#t3:checked ~ header label[for="t3"],
-#t4:checked ~ header label[for="t4"]{
-background:var(--neon);
-color:#000;
+border:1px solid #333;
 }
 
 /* MAIN */
-.main-view{
-margin-top:70px;
-height:calc(100vh - 70px);
-overflow-y:auto;
-padding:20px;
-}
+.main-view { margin-top:110px; height:calc(100vh - 110px); overflow-y:auto; padding:20px; }
 
-section{display:none;animation:fade .4s ease;max-width:900px;margin:auto}
-@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
-
-#t1:checked ~ .main-view #home{display:block}
-#t2:checked ~ .main-view #amenities{display:block}
-#t3:checked ~ .main-view #membership{display:block}
-#t4:checked ~ .main-view #training{display:block}
+section { display:none; }
+#t1:checked ~ .main-view #home,
+#t2:checked ~ .main-view #amenities,
+#t3:checked ~ .main-view #membership,
+#t4:checked ~ .main-view #training { display:block; }
 
 /* HERO */
-.presale-hero{
-background:linear-gradient(135deg,#92d05020,#ffffff10);
-backdrop-filter:blur(20px);
-border:1px solid var(--border);
+.presale-hero {
+background: var(--neon);
+color:#000;
 padding:35px;
 border-radius:20px;
 text-align:center;
 margin-bottom:30px;
 }
 
-.presale-hero h1{font-size:36px;font-weight:900}
-.old-price{text-decoration:line-through;opacity:.6}
+.old-price{text-decoration:line-through}
 
-.price-display{
-font-size:60px;
-font-weight:900;
-color:var(--neon);
-display:none;
-animation:pop 1.2s infinite;
-}
-@keyframes pop{50%{transform:scale(1.1)}}
-
-.reveal-label{
-background:#000;
-color:var(--neon);
-padding:12px 25px;
-border-radius:30px;
-cursor:pointer;
-font-weight:900;
-border:1px solid var(--neon);
-display:inline-block;
-margin-top:10px;
-}
+.price-display{font-size:60px;font-weight:900;display:none}
 
 #reveal-check{display:none}
 #reveal-check:checked ~ .price-reveal-box .reveal-label{display:none}
 #reveal-check:checked ~ .price-reveal-box .price-display{display:block}
 
-.cta-btn{
-margin-top:20px;
-background:var(--neon);
-color:#000;
-padding:15px 30px;
-border:none;
-border-radius:30px;
-font-weight:900;
-cursor:pointer;
-transition:.3s;
-}
-.cta-btn:hover{transform:scale(1.08)}
-
-/* CONTENT */
-.green-box{
-border-left:4px solid var(--neon);
-padding-left:20px;
-margin-bottom:25px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:12px;
-}
-
-.card{
-background:var(--glass);
-border:1px solid var(--border);
+/* FLOAT BUTTONS */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
 padding:15px;
-border-radius:12px;
-text-align:center;
-font-size:13px;
-transition:.3s;
+border-radius:50%;
+z-index:9999;
+text-decoration:none;
+font-size:20px;
 }
-.card:hover{transform:translateY(-5px);box-shadow:0 0 15px #92d05033}
 
-/* AMENITIES */
-.amenity{
+.call{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#000;
+color:var(--neon);
+padding:12px;
+border-radius:50%;
+border:2px solid var(--neon);
+z-index:9999;
+text-decoration:none;
+}
+
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+z-index:9999;
+justify-content:center;
+align-items:center;
+}
+.popup-box{
 background:#fff;
 color:#000;
-padding:15px;
+padding:30px;
 border-radius:10px;
-font-weight:800;
-border-bottom:4px solid var(--neon);
-}
-
-/* MEMBERSHIP */
-.plan{
-background:var(--glass);
-border:1px solid var(--border);
-padding:20px;
-border-radius:12px;
 text-align:center;
 }
-.plan .price{font-size:26px;color:var(--neon);font-weight:900}
-
-/* TABLE */
-.table{
-background:var(--glass);
-border:1px solid var(--border);
-padding:15px;
-border-radius:10px;
-margin-top:10px;
-}
-table{width:100%;border-collapse:collapse}
-td{padding:10px;border-bottom:1px solid #222}
-.highlight{color:var(--neon);font-weight:800}
 </style>
 </head>
 
 <body>
+
+<div class="top-bar">⚡ Launch Offer Ending Soon | Only 100 Slots Left</div>
 
 <input type="radio" name="tabs" id="t1" checked>
 <input type="radio" name="tabs" id="t2">
@@ -188,7 +144,7 @@ td{padding:10px;border-bottom:1px solid #222}
 <input type="radio" name="tabs" id="t4">
 
 <header>
-<div class="logo">TAISO ⚡ PREMIUM</div>
+<div class="logo">TAISO PREMIUM</div>
 <nav>
 <label for="t1" class="nav-btn">Home</label>
 <label for="t2" class="nav-btn">Amenities</label>
@@ -199,10 +155,8 @@ td{padding:10px;border-bottom:1px solid #222}
 
 <div class="main-view">
 
-<!-- HOME -->
 <section id="home">
 <div class="presale-hero">
-<p>Limited Time Launch Offer</p>
 <h1>Opening Offer</h1>
 <div class="old-price">₹24,999</div>
 
@@ -212,78 +166,35 @@ td{padding:10px;border-bottom:1px solid #222}
 <div class="price-display">₹19,999</div>
 </div>
 
-<p style="margin-top:10px;font-weight:700;">⚠️ Only First 100 Members</p>
-<button class="cta-btn">JOIN NOW / BOOK VISIT</button>
-</div>
-
-<div class="green-box">
-<h2>From Seawoods & Panvel to Baner</h2>
-<p>TAISO Premium now brings elite fitness experience to Baner. This is not just a gym — this is a premium lifestyle.</p>
-</div>
-
-<div class="grid">
-<div class="card">Ultra Premium Equipment</div>
-<div class="card">24/7 Access</div>
-<div class="card">Expert Trainers</div>
-<div class="card">Steam & Recovery</div>
+<p>⚠️ Only for First 100 Members</p>
+<p style="color:#000;font-weight:900;">🔥 27 People Viewing Now</p>
 </div>
 </section>
 
-<!-- AMENITIES -->
-<section id="amenities">
-<h2>Included in Membership</h2>
-<div class="grid">
-<div class="amenity">Cardio</div>
-<div class="amenity">CrossFit</div>
-<div class="amenity">Workout Plan</div>
-<div class="amenity">Steam</div>
-<div class="amenity">Zumba</div>
-<div class="amenity">Yoga</div>
-</div>
-
-<h2 style="margin-top:20px;color:#ffcc00">Upgrade Services</h2>
-<div class="grid">
-<div class="amenity" style="border-color:#ffcc00">Ice Bath</div>
-<div class="amenity" style="border-color:#ffcc00">MMA</div>
-<div class="amenity" style="border-color:#ffcc00">Pilates</div>
-<div class="amenity" style="border-color:#ffcc00">PT Studio</div>
-</div>
-</section>
-
-<!-- MEMBERSHIP -->
-<section id="membership">
-<div class="grid">
-<div class="plan"><h3>1 Month</h3><div class="price">₹5,999</div></div>
-<div class="plan"><h3>3 Months</h3><div class="price">₹14,999</div></div>
-<div class="plan"><h3>6 Months ⭐</h3><div class="price">₹19,999</div></div>
-<div class="plan"><h3>12 Months 🔥</h3><div class="price">₹24,999</div></div>
-</div>
-</section>
-
-<!-- TRAINING -->
-<section id="training">
-<h2>Personal Training</h2>
-<div class="table">
-<table>
-<tr><td>1 Month</td><td class="highlight">₹10,000</td></tr>
-<tr><td>3 Months</td><td class="highlight">₹27,000</td></tr>
-<tr><td>6 Months</td><td class="highlight">₹50,000</td></tr>
-<tr><td>12 Months</td><td class="highlight">₹90,000</td></tr>
-</table>
-</div>
-
-<h2 style="margin-top:20px">Group Classes</h2>
-<div class="table">
-<table>
-<tr><td>Pilates</td><td class="highlight">₹18,000</td></tr>
-<tr><td>MMA</td><td class="highlight">₹3,000</td></tr>
-<tr><td>Yoga</td><td class="highlight">₹3,000</td></tr>
-<tr><td>Zumba</td><td class="highlight">₹3,000</td></tr>
-</table>
-</div>
-</section>
+<section id="amenities"><h2>Amenities</h2></section>
+<section id="membership"><h2>Membership</h2></section>
+<section id="training"><h2>Training</h2></section>
 
 </div>
+
+<!-- FLOAT BUTTONS -->
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">💬</a>
+<a href="tel:+91XXXXXXXXXX" class="call">📞</a>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+<h2>Wait! Special Offer 🔥</h2>
+<p>Extra Discount Available Today</p>
+<button onclick="document.getElementById('popup').style.display='none'">Close</button>
+</div>
+</div>
+
+<script>
+setTimeout(()=>{
+document.getElementById('popup').style.display='flex'
+},8000)
+</script>
 
 </body>
 </html>
