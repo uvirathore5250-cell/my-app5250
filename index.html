@@ -69,7 +69,6 @@
             text-align: center; margin-bottom: 40px; position: relative;
         }
         .presale-hero h1 { font-size: 38px; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
-        .old-price { text-decoration: line-through; opacity: 0.7; font-size: 20px; font-weight: bold; }
         
         #reveal-check { display: none; }
         .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; transition: 0.3s; }
@@ -80,14 +79,14 @@
         }
         @keyframes pricePopup {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(0,0,0,0.2); }
+            50% { transform: scale(1.1); }
         }
 
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
 
-        /* BOGO OFFER BANNER */
-        .bogo-banner {
+        /* SEATS ALERT BANNER */
+        .seats-banner {
             background: #ff3333; color: white; padding: 15px; border-radius: 15px;
             text-align: center; font-weight: 900; margin-bottom: 25px;
             border: 2px dashed white; animation: pulse 2s infinite;
@@ -115,43 +114,25 @@
         .usp-card { background: #161616; padding: 25px; border-radius: 20px; border: 1px solid #222; }
         .usp-card h4 { color: var(--neon); margin-bottom: 10px; font-size: 15px; text-transform: uppercase; }
 
-        .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .m-card { background: #111; padding: 30px 15px; border-radius: 20px; border: 1px solid #222; text-align: center; position: relative; }
-        .m-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 5px; }
-        .m-price { font-size: 32px; font-weight: 900; color: var(--neon); margin-bottom: 15px; }
-        .m-features { list-style: none; text-align: left; border-top: 1px solid #222; padding-top: 15px; }
-        .m-features li { font-size: 11px; color: #aaa; margin-bottom: 7px; display: flex; align-items: center; gap: 7px; font-weight: 600; text-transform: uppercase; }
-        .m-features li::before { content: '✓'; color: var(--neon); }
-
         .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; }
         td { padding: 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
 
-        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
         .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
-        .amenity-card span { font-size: 24px; }
-
+        
         .gym-status-badge { display: flex; align-items: center; gap: 10px; background: #161616; padding: 10px 20px; border-radius: 50px; width: fit-content; margin: 0 auto 20px; border: 1px solid #222; }
         .status-dot { height: 10px; width: 10px; background: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366; }
         
         .premium-footer { background: linear-gradient(to bottom, #111, #000); padding: 40px 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; border-radius: 20px 20px 0 0; }
-        .footer-cta { color: #fff; text-decoration: none; font-weight: 900; font-size: 18px; display: block; margin: 10px 0; letter-spacing: 1px; }
         
         .whatsapp-float {
             position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 2000; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; text-decoration: none;
         }
-
-        /* COUNTDOWN TIMER */
-        .countdown-wrap { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .time-box { background: rgba(0,0,0,0.5); padding: 10px; border-radius: 10px; min-width: 60px; }
-        .time-box span { display: block; font-size: 20px; font-weight: 900; }
-        .time-box label { font-size: 10px; text-transform: uppercase; opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -184,23 +165,17 @@
             <div class="presale-hero">
                 <p>Limited Time Grand Launch Offer</p>
                 <h1>Opening Offer</h1>
-                <div class="old-price">Regular Price: ₹24,999</div>
                 <input type="checkbox" id="reveal-check">
                 <div class="price-reveal-box">
                     <label for="reveal-check" class="reveal-label">Click to Reveal Price</label>
                     <div class="price-display">₹19,999/-</div>
                 </div>
-                
-                <div class="countdown-wrap">
-                    <div class="time-box"><span>05</span><label>Days</label></div>
-                    <div class="time-box"><span>12</span><label>Hrs</label></div>
-                    <div class="time-box"><span>45</span><label>Min</label></div>
-                </div>
+                <p>Annual Membership | Full 24/7 Access</p>
             </div>
 
-            <div class="bogo-banner">
-                🔥 BUY 1 GET 1 FREE OFFER 🔥<br>
-                <span style="font-size: 12px; font-weight: normal;">Valid for Early Bird Members Only</span>
+            <div class="seats-banner">
+                ⚠️ ONLY 17 SEATS AVAILABLE ONLY ⚠️<br>
+                <span style="font-size: 12px; font-weight: normal;">Book Your Slot Before Prices Go Up!</span>
             </div>
 
             <div class="about-section">
@@ -224,78 +199,60 @@
                 
                 <div class="green-border-box" style="margin-top: 40px;">
                     <h2>Our Motive</h2>
-                    <p>Our goal in Baner is to provide a <b>Best-in-Class Premium Service</b>. We believe that fitness should be luxurious and result-driven.</p>
+                    <p>Our goal in Baner is to provide a <b>Best-in-Class Premium Service</b>.</p>
                 </div>
 
                 <div class="usp-grid">
-                    <div class="usp-card"><h4>Ultra-Premium Gear</h4><p>Experience advanced strength machines.</p></div>
-                    <div class="usp-card"><h4>24/7 Elite Access</h4><p>Train whenever inspiration strikes.</p></div>
-                    <div class="usp-card"><h4>Recovery Suite</h4><p>Specialized Steam & Jacuzzi facilities.</p></div>
+                    <div class="usp-card"><h4>Ultra-Premium Gear</h4><p>Advanced strength machines.</p></div>
+                    <div class="usp-card"><h4>24/7 Elite Access</h4><p>Train whenever you want.</p></div>
                 </div>
             </div>
         </section>
 
         <section id="amenities">
-            <h2 style="text-align: center; margin-bottom: 10px;">PREMIUM <span style="color:var(--neon)">AMENITIES</span></h2>
-            <div class="cat-label">Included in Membership</div>
+            <h2 style="text-align: center; margin-bottom: 20px;">PREMIUM AMENITIES</h2>
             <div class="amenity-grid">
-                <div class="amenity-card"><span>⚡</span><h4>Cardio & CrossFit</h4></div>
-                <div class="amenity-card"><span>💪</span><h4>Functional Training</h4></div>
-                <div class="amenity-card"><span>🔥</span><h4>3-Day Free PT Trial</h4></div>
-                <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam & Shower</h4></div>
-                <div class="amenity-card"><span>📊</span><h4>BMI & Fitness Test</h4></div>
-                <div class="amenity-card"><span>🧘</span><h4>Yoga & Zumba</h4></div>
-            </div>
-
-            <div class="cat-label" style="color:#ffcc00; border-left-color:#ffcc00;">Paid Services</div>
-            <div class="amenity-grid">
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧊</span><h4>Ice Bath Sessions</h4></div>
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🥊</span><h4>MMA Zone</h4></div>
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🤸</span><h4>Trampoline</h4></div>
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧘</span><h4>Pilates</h4></div>
+                <div class="amenity-card"><span>⚡</span><h4>Cardio</h4></div>
+                <div class="amenity-card"><span>💪</span><h4>Strength</h4></div>
+                <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam</h4></div>
+                <div class="amenity-card"><span>📊</span><h4>BMI Test</h4></div>
+                <div class="amenity-card"><span>🧘</span><h4>Yoga</h4></div>
+                <div class="amenity-card"><span>🧊</span><h4>Ice Bath</h4></div>
             </div>
         </section>
 
         <section id="membership">
-            <h2 style="text-align: center; margin-bottom: 30px;">MEMBERSHIP <span style="color:var(--neon)">PACKAGES</span></h2>
-            <div class="m-grid">
-                <div class="m-card">
-                    <div class="m-title">1 MONTH</div><div class="m-price">₹5,999</div>
-                    <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Steam Bath</li></ul>
-                </div>
-                <div class="m-card" style="border-color: var(--neon);">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--neon); color: #000; padding: 4px 15px; border-radius: 5px; font-size: 10px; font-weight: 900;">BEST VALUE</div>
-                    <div class="m-title">12 MONTHS</div><div class="m-price">₹24,999</div>
-                    <ul class="m-features"><li>24/7 Gym Access</li><li>Workout Plan</li><li>Unlimited Classes</li></ul>
-                </div>
+            <h2 style="text-align: center; margin-bottom: 20px;">MEMBERSHIP PLANS</h2>
+            <div class="table-card">
+                <table>
+                    <thead><tr><th>DURATION</th><th>BENEFITS</th><th>PRICE</th></tr></thead>
+                    <tbody>
+                        <tr><td>1 Month</td><td>Gym Access + Steam</td><td class="price-text">₹5,999</td></tr>
+                        <tr><td>3 Months</td><td>Gym + BMI + Steam</td><td class="price-text">₹12,999</td></tr>
+                        <tr><td>6 Months</td><td>Gym + All Access</td><td class="price-text">₹17,999</td></tr>
+                        <tr style="background: #1a1a1a;"><td>12 Months</td><td>24/7 Full Access</td><td class="price-text">₹24,999</td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
         <section id="training">
-            <h2 style="margin-bottom: 15px;">PERSONAL <span style="color:var(--neon)">TRAINING</span></h2>
+            <h2 style="margin-bottom: 15px; text-align: center;">PERSONAL TRAINING</h2>
             <div class="table-card">
                 <table>
-                    <thead><tr><th>DURATION</th><th>LEVEL 1</th><th>LEVEL 2</th><th>LEVEL 3</th></tr></thead>
+                    <thead><tr><th>DURATION</th><th>LEVEL 1</th><th>LEVEL 2</th></tr></thead>
                     <tbody>
-                        <tr><td>1 Month</td><td class="price-text">10,000</td><td class="price-text">12,000</td><td class="price-text">15,000</td></tr>
-                        <tr><td>3 Months</td><td class="price-text">27,000</td><td class="price-text">32,000</td><td class="price-text">40,000</td></tr>
-                        <tr><td>12 Months</td><td class="price-text">90,000</td><td class="price-text">100,000</td><td class="price-text">120,000</td></tr>
+                        <tr><td>1 Month</td><td class="price-text">10,000</td><td class="price-text">12,000</td></tr>
+                        <tr><td>3 Months</td><td class="price-text">27,000</td><td class="price-text">32,000</td></tr>
+                        <tr><td>12 Months</td><td class="price-text">90,000</td><td class="price-text">100,000</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
         <div class="premium-footer">
-            <h3 style="color: var(--neon); letter-spacing: 2px; text-transform: uppercase;">The Elite Club</h3>
-            <p style="font-size: 14px; margin: 15px 0; color: #888;">Baner Road, Pune | Seawoods | Panvel</p>
-            
-            <a href="tel:+91XXXXXXXXXX" class="footer-cta">+91 XXXXX XXXXX</a>
-            <a href="tel:+91XXXXXXXXXX" class="footer-cta">+91 XXXXX XXXXX</a>
-            
-            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; font-size: 12px; color: #444; font-weight: 900;">
-                <span>INSTAGRAM</span> • <span>FACEBOOK</span> • <span>YOUTUBE</span>
-            </div>
-            <p style="margin-top: 20px; font-size: 10px; color: #333;">© 2026 TAISO PREMIUM FITNESS. ALL RIGHTS RESERVED.</p>
+            <p style="font-size: 14px; margin-bottom: 10px; color: #888;">BANER • SEAWOODS • PANVEL</p>
+            <p style="font-size: 10px; color: #333;">© 2026 TAISO PREMIUM FITNESS.</p>
         </div>
 
     </div>
@@ -310,14 +267,14 @@
             box.style.display = 'block';
 
             if(type === 'loss') {
-                title.innerText = "Target: Fat Loss Elite";
-                desc.innerText = "We recommend our 12-Month Plan + Level 2 PT for high-intensity metabolic conditioning.";
+                title.innerText = "Target: Fat Loss";
+                desc.innerText = "We recommend our 12-Month Plan + Level 2 PT.";
             } else if(type === 'gain') {
-                title.innerText = "Target: Hypertrophy Pro";
-                desc.innerText = "Our Level 3 Coaches will guide you through advanced strength protocols and personalized nutrition.";
+                title.innerText = "Target: Muscle Gain";
+                desc.innerText = "Advanced strength protocols and personalized nutrition.";
             } else {
-                title.innerText = "Target: Athletic Performance";
-                desc.innerText = "Focus on MMA and Pilates zones to enhance mobility, core, and explosive power.";
+                title.innerText = "Target: Athletic";
+                desc.innerText = "Focus on MMA and specialized functional zones.";
             }
         }
     </script>
