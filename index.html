@@ -77,10 +77,7 @@
             font-size: 60px; font-weight: 900; display: none; margin: 15px 0; 
             animation: pricePopup 1.2s infinite ease-in-out;
         }
-        @keyframes pricePopup {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
+        @keyframes pricePopup { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
@@ -105,17 +102,12 @@
         .about-section p { color: #bbb; line-height: 1.8; font-size: 16px; margin-bottom: 25px; }
         .green-border-box { border-left: 5px solid var(--neon); padding-left: 25px; margin-bottom: 40px; }
         
-        .usp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .usp-card { background: #161616; padding: 25px; border-radius: 20px; border: 1px solid #222; }
-        .usp-card h4 { color: var(--neon); margin-bottom: 10px; font-size: 15px; text-transform: uppercase; }
-
         .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; }
         td { padding: 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
 
-        /* AMENITIES STYLING (REVERTED TO THE GOOD VERSION) */
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
         .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
@@ -210,7 +202,7 @@
                 <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧊</span><h4>Ice Bath Sessions</h4></div>
                 <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🥊</span><h4>MMA Zone</h4></div>
                 <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🤸</span><h4>Trampoline</h4></div>
-                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>🧘</span><h4>Pilates</h4></div>
+                <div class="amenity-card" style="border-bottom-color:#ffcc00;"><span>☕</span><h4>Nutrition Cafe</h4></div>
             </div>
         </section>
 
