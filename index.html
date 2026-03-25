@@ -85,17 +85,12 @@
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
 
-        /* SEATS ALERT BANNER */
         .seats-banner {
             background: #ff3333; color: white; padding: 15px; border-radius: 15px;
             text-align: center; font-weight: 900; margin-bottom: 25px;
             border: 2px dashed white; animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
         .goal-selector { background: #111; padding: 25px; border-radius: 20px; border: 1px solid #222; margin-top: 30px; }
         .goal-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
@@ -120,19 +115,18 @@
         td { padding: 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
         .price-text { color: var(--neon); font-weight: 800; }
 
-        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        /* AMENITIES STYLING */
+        .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
+        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
         .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); transition: 0.3s; }
-        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
-        
+        .amenity-card span { font-size: 24px; display: block; margin-bottom: 5px; }
+        .amenity-card h4 { font-size: 11px; text-transform: uppercase; font-weight: 800; }
+
         .gym-status-badge { display: flex; align-items: center; gap: 10px; background: #161616; padding: 10px 20px; border-radius: 50px; width: fit-content; margin: 0 auto 20px; border: 1px solid #222; }
         .status-dot { height: 10px; width: 10px; background: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366; }
         
         .premium-footer { background: linear-gradient(to bottom, #111, #000); padding: 40px 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; border-radius: 20px 20px 0 0; }
-        
-        .whatsapp-float {
-            position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; text-decoration: none;
-        }
+        .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -196,28 +190,34 @@
                         <p id="goal-desc" style="font-size: 12px; color: #aaa; margin-top: 5px;"></p>
                     </div>
                 </div>
-                
-                <div class="green-border-box" style="margin-top: 40px;">
-                    <h2>Our Motive</h2>
-                    <p>Our goal in Baner is to provide a <b>Best-in-Class Premium Service</b>.</p>
-                </div>
-
-                <div class="usp-grid">
-                    <div class="usp-card"><h4>Ultra-Premium Gear</h4><p>Advanced strength machines.</p></div>
-                    <div class="usp-card"><h4>24/7 Elite Access</h4><p>Train whenever you want.</p></div>
-                </div>
             </div>
         </section>
 
         <section id="amenities">
-            <h2 style="text-align: center; margin-bottom: 20px;">PREMIUM AMENITIES</h2>
+            <h2 style="text-align: center; margin-bottom: 10px;">WORLD-CLASS <span style="color:var(--neon)">FACILITIES</span></h2>
+            
+            <div class="cat-label">Core Fitness</div>
             <div class="amenity-grid">
-                <div class="amenity-card"><span>⚡</span><h4>Cardio</h4></div>
-                <div class="amenity-card"><span>💪</span><h4>Strength</h4></div>
-                <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam</h4></div>
-                <div class="amenity-card"><span>📊</span><h4>BMI Test</h4></div>
-                <div class="amenity-card"><span>🧘</span><h4>Yoga</h4></div>
+                <div class="amenity-card"><span>🏋️</span><h4>Strength Zone</h4></div>
+                <div class="amenity-card"><span>🏃</span><h4>Cardio Hub</h4></div>
+                <div class="amenity-card"><span>💪</span><h4>Crossfit Area</h4></div>
+                <div class="amenity-card"><span>🥋</span><h4>MMA Zone</h4></div>
+            </div>
+
+            <div class="cat-label">Wellness & Recovery</div>
+            <div class="amenity-grid">
+                <div class="amenity-card"><span>🧖</span><h4>Steam Bath</h4></div>
                 <div class="amenity-card"><span>🧊</span><h4>Ice Bath</h4></div>
+                <div class="amenity-card"><span>🚿</span><h4>Luxury Shower</h4></div>
+                <div class="amenity-card"><span>💆</span><h4>Massage Chair</h4></div>
+            </div>
+
+            <div class="cat-label">Group Classes & More</div>
+            <div class="amenity-grid">
+                <div class="amenity-card"><span>🧘</span><h4>Yoga Studio</h4></div>
+                <div class="amenity-card"><span>💃</span><h4>Zumba/Dance</h4></div>
+                <div class="amenity-card"><span>🤸</span><h4>Trampoline</h4></div>
+                <div class="amenity-card"><span>📊</span><h4>Body Analysis</h4></div>
             </div>
         </section>
 
