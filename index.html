@@ -3,113 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAISO Premium - Baner Launch</title>
+    <title>TAISO Premium | Baner Launch 2026</title>
     <style>
         :root { 
             --neon: #92d050; 
-            --neon-glossy: linear-gradient(90deg, #92d050 0%, #d4ffaa 50%, #92d050 100%);
             --bg: #050505; 
-            --card: #121212; 
-            --text: #eee; 
+            --card: #111; 
+            --text-main: #fff;
+            --text-dim: #888;
         }
 
-        @keyframes flow { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--text); padding-bottom: 80px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
+        body { background: var(--bg); color: var(--text-main); line-height: 1.6; padding-bottom: 80px; }
+        
+        /* Utility */
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .neon-text { color: var(--neon); }
+        .section-title { font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; border-left: 5px solid var(--neon); padding-left: 15px; }
 
         input[type="radio"] { display: none; }
 
-        /* Floating WhatsApp Button */
-        .wa-float {
-            position: fixed; bottom: 100px; right: 20px; background: #25d366;
-            width: 50px; height: 50px; border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; z-index: 2000;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); text-decoration: none;
-        }
-
-        header {
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); padding: 15px; 
-            position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid #222;
-            display: flex; justify-content: center;
-        }
-        .logo { font-weight: 900; letter-spacing: 3px; color: #fff; font-size: 22px; }
+        /* Navigation */
+        header { background: rgba(0,0,0,0.95); padding: 15px; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 1px solid #222; text-align: center; }
+        .logo { font-size: 20px; font-weight: 900; letter-spacing: 4px; }
         
-        /* Bottom Navigation for Mobile UX */
-        .bottom-nav {
-            position: fixed; bottom: 0; width: 100%; background: #000;
-            display: flex; justify-content: space-around; padding: 15px;
-            border-top: 1px solid #333; z-index: 1000;
-        }
-        .nav-btn {
-            color: #777; font-size: 10px; font-weight: 800; text-transform: uppercase;
-            cursor: pointer; transition: 0.3s;
-        }
-
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #000; display: flex; justify-content: space-around; padding: 15px; border-top: 1px solid #333; z-index: 1000; }
+        .nav-label { font-size: 10px; font-weight: 800; color: #555; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        
         #t1:checked ~ .bottom-nav label[for="t1"],
         #t2:checked ~ .bottom-nav label[for="t2"],
         #t3:checked ~ .bottom-nav label[for="t3"],
-        #t4:checked ~ .bottom-nav label[for="t4"] {
-            color: var(--neon); transform: translateY(-5px);
-        }
+        #t4:checked ~ .bottom-nav label[for="t4"] { color: var(--neon); transform: translateY(-3px); }
 
-        .main-view { margin-top: 60px; padding: 20px; }
-        
-        section { display: none; animation: fadeIn 0.6s ease; max-width: 900px; margin: 0 auto; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .content-area { margin-top: 65px; }
+        section { display: none; animation: slideUp 0.5s ease forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        #t1:checked ~ .main-view #home,
-        #t2:checked ~ .main-view #amenities,
-        #t3:checked ~ .main-view #membership,
-        #t4:checked ~ .main-view #training { display: block; }
+        #t1:checked ~ .content-area #home,
+        #t2:checked ~ .content-area #about,
+        #t3:checked ~ .content-area #plans,
+        #t4:checked ~ .content-area #contact { display: block; }
 
-        /* Cinematic Hero Section */
-        .hero-video-container {
-            position: relative; height: 350px; border-radius: 25px; overflow: hidden; margin-bottom: 30px;
-            background: #111; display: flex; align-items: center; justify-content: center;
-            border: 1px solid #222;
-        }
-        .hero-overlay {
-            position: absolute; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; text-align: center;
-        }
+        /* Hero */
+        .hero { position: relative; height: 450px; background: #111; border-radius: 20px; overflow: hidden; display: flex; align-items: flex-end; padding: 30px; margin-bottom: 30px; border: 1px solid #222; }
+        .hero-text h1 { font-size: 40px; line-height: 1; margin-bottom: 10px; }
+        .badge { background: var(--neon); color: #000; padding: 5px 12px; border-radius: 4px; font-weight: 900; font-size: 12px; margin-bottom: 15px; display: inline-block; }
 
-        .urgency-badge {
-            background: #ff4444; color: #fff; padding: 5px 15px; border-radius: 50px;
-            font-size: 11px; font-weight: 900; animation: pulse-red 1.5s infinite;
-            display: inline-block; margin-bottom: 10px;
-        }
+        /* Comparison Table */
+        .comp-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 15px; overflow: hidden; margin: 20px 0; }
+        .comp-table th, .comp-table td { padding: 15px; text-align: left; border-bottom: 1px solid #222; font-size: 14px; }
+        .comp-table th { background: #1a1a1a; color: var(--neon); }
+        .check { color: var(--neon); font-weight: bold; }
 
-        .price-reveal-box { margin: 15px 0; }
-        .reveal-btn {
-            background: var(--neon-glossy); color: #000; padding: 15px 30px;
-            border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block;
-        }
-        #reveal-check { display: none; }
-        .price-display { font-size: 50px; font-weight: 900; display: none; color: #fff; }
-        #reveal-check:checked ~ .price-display { display: block; }
-        #reveal-check:checked ~ .reveal-btn { display: none; }
+        /* Gallery Grid */
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .img-box { aspect-ratio: 1/1; background: #222; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #444; border: 1px solid #333; }
 
-        /* Grid Updates */
-        .amenity-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .amenity-card { 
-            background: #161616; padding: 20px; border-radius: 15px; text-align: center;
-            border: 1px solid #222; transition: 0.3s;
-        }
-        .amenity-card:hover { border-color: var(--neon); transform: translateY(-3px); }
-        .amenity-card span { font-size: 28px; display: block; margin-bottom: 5px; }
-        .amenity-card h4 { font-size: 11px; color: #fff; text-transform: uppercase; }
+        /* Contact & Map */
+        .map-box { width: 100%; height: 250px; border-radius: 15px; background: #1a1a1a; margin-top: 20px; border: 1px solid #333; }
+        .contact-card { background: var(--card); padding: 25px; border-radius: 15px; border-left: 5px solid var(--neon); margin-bottom: 20px; }
 
-        .m-card { background: #111; padding: 25px; border-radius: 20px; border: 1px solid #222; margin-bottom: 15px; }
-        .m-title { color: var(--neon); font-weight: 900; font-size: 14px; }
-        .m-price { font-size: 35px; font-weight: 900; margin: 10px 0; }
-        
-        .table-card { overflow-x: auto; background: #111; padding: 15px; border-radius: 15px; }
-        table { width: 100%; min-width: 400px; color: #aaa; font-size: 13px; }
-        th { text-align: left; padding: 10px; color: var(--neon); border-bottom: 1px solid #222; }
-        td { padding: 10px; border-bottom: 1px solid #1a1a1a; }
-        .price-text { color: #fff; font-weight: 700; }
+        .cta-btn { background: var(--neon); color: #000; padding: 15px; width: 100%; border-radius: 10px; text-decoration: none; display: block; text-align: center; font-weight: 900; margin-top: 15px; }
 
     </style>
 </head>
@@ -120,84 +74,102 @@
     <input type="radio" name="tabs" id="t3">
     <input type="radio" name="tabs" id="t4">
 
-    <a href="https://wa.me/YOUR_NUMBER" class="wa-float">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12.031 6.172c-2.135 0-3.871 1.731-3.871 3.863 0 .733.208 1.416.564 2.0l-.547 2.016 2.071-.539a3.81 3.81 0 001.783.447c2.135 0 3.871-1.731 3.871-3.863.001-2.132-1.735-3.864-3.871-3.864zm1.905 5.503c-.08.221-.462.421-.639.449-.175.028-.35.042-.515-.001-.165-.043-.342-.114-.582-.207-.98-.386-1.616-1.387-1.666-1.454-.049-.067-.403-.537-.403-1.025 0-.488.254-.727.345-.826.091-.099.199-.124.266-.124.067 0 .133.001.192.003.061.002.143-.023.224.172.081.194.276.671.3.729.025.058.041.124.001.207-.039.083-.058.133-.117.202-.059.068-.124.152-.178.204-.06.059-.122.122-.052.242.069.119.308.508.661.823.454.404.836.53.955.589.119.059.189.049.259-.033.07-.083.299-.348.379-.467.079-.118.159-.099.266-.059.108.04.685.323.803.382.118.058.196.087.225.137.03.05.03.284-.05.505zM12 2C6.48 2 2 6.48 2 12c0 1.93.55 3.73 1.49 5.27L2 22l4.87-1.28c1.5.85 3.23 1.28 5.13 1.28 5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.65 0-3.2-.41-4.54-1.12l-.33-.18-2.88.75.77-2.82-.2-.33A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8z"/></svg>
-    </a>
-
-    <header><div class="logo">TAISO PREMIUM</div></header>
+    <header><div class="logo">TAISO <span class="neon-text">PREMIUM</span></div></header>
 
     <div class="bottom-nav">
-        <label for="t1" class="nav-btn">Home</label>
-        <label for="t2" class="nav-btn">Facilities</label>
-        <label for="t3" class="nav-btn">Plans</label>
-        <label for="t4" class="nav-btn">Training</label>
+        <label for="t1" class="nav-label">Home</label>
+        <label for="t2" class="nav-label">The Vision</label>
+        <label for="t3" class="nav-label">Memberships</label>
+        <label for="t4" class="nav-label">Connect</label>
     </div>
 
-    <div class="main-view">
+    <div class="content-area container">
+
         <section id="home">
-            <div class="hero-video-container">
-                <div class="hero-overlay">
-                    <div class="urgency-badge">LIFETIME LOWEST PRICE - LAST 14 SLOTS</div>
-                    <h1 style="font-size: 32px; font-weight: 900;">BANER LAUNCH</h1>
-                    <p style="font-size: 13px; color: #aaa;">Seawoods | Panvel | Now in Pune</p>
-                    <div class="price-reveal-box">
-                        <input type="checkbox" id="reveal-check">
-                        <label for="reveal-check" class="reveal-btn">REVEAL LAUNCH PRICE</label>
-                        <div class="price-display">₹19,999<span style="font-size: 15px; color: var(--neon);">/YEAR</span></div>
-                    </div>
+            <div class="hero">
+                <div class="hero-text">
+                    <div class="badge">NOW IN BANER, PUNE</div>
+                    <h1>REDEFINE<br><span class="neon-text">ELITE FITNESS</span></h1>
+                    <p style="color:#aaa">Experience the 24/7 Premium Lifestyle.</p>
                 </div>
             </div>
 
-            <h2 style="margin-bottom: 10px;">THE <span style="color:var(--neon)">TAISO</span> STANDARD</h2>
-            <p style="font-size: 14px; color: #888; line-height: 1.6; margin-bottom: 20px;">Hamara motive Baner mein Best-in-Class service dena hai. Premium gear, 24/7 access aur elite results – sab ek hi jagah.</p>
+            <h2 class="section-title">Why <span class="neon-text">TAISO?</span></h2>
+            <table class="comp-table">
+                <thead><tr><th>Feature</th><th>TAISO Premium</th><th>Ordinary Gyms</th></tr></thead>
+                <tbody>
+                    <tr><td>Access</td><td class="check">24/7 Unlimited</td><td>Fixed Timings</td></tr>
+                    <tr><td>Machines</td><td class="check">Ultra-Premium</td><td>Standard Gear</td></tr>
+                    <tr><td>Recovery</td><td class="check">Steam/Ice Bath</td><td>N/A</td></tr>
+                    <tr><td>Support</td><td class="check">Custom Diet & PT</td><td>General Advice</td></tr>
+                </tbody>
+            </table>
+
+            <h2 class="section-title">The <span class="neon-text">Gallery</span></h2>
+            <div class="gallery">
+                <div class="img-box">Cinematic Shot 1</div>
+                <div class="img-box">Cinematic Shot 2</div>
+                <div class="img-box">Cinematic Shot 3</div>
+                <div class="img-box">Cinematic Shot 4</div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">The <span class="neon-text">Legacy</span></h2>
+            <p style="margin-bottom: 20px; color: #ccc;">Seawoods aur Panvel mein hazaron transformation karne ke baad, TAISO ab Baner mein ek naya standard set kar raha hai. Hamara mission fitness ko luxury aur results ke saath jodna hai.</p>
             
-            <div class="m-card" style="border-left: 4px solid var(--neon);">
-                <h4 style="color: #fff;">3-Day Free Trial</h4>
-                <p style="font-size: 12px; color: #666;">Experience before you commit. Personal training trial included.</p>
+            <div class="contact-card">
+                <h3 class="neon-text">Master Coaching</h3>
+                <p>Hamare trainers sirf workout nahi karwate, wo transformation lead karte hain. Level 1, 2, aur 3 expert coaching available hai.</p>
+            </div>
+
+            <div class="contact-card" style="border-left-color: #fff;">
+                <h3>Recovery Suite</h3>
+                <p>Muscle recovery ke liye specialized Ice Baths, Jacuzzi aur Steam facilities jo Pune mein kaafi kam jagah milti hain.</p>
             </div>
         </section>
 
-        <section id="amenities">
-            <h2 style="margin-bottom: 20px;">ELITE <span style="color:var(--neon)">FACILITIES</span></h2>
-            <div class="amenity-grid">
-                <div class="amenity-card"><span>⭐</span><h4>24/7 Access</h4></div>
-                <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam/Bath</h4></div>
-                <div class="amenity-card"><span>🧊</span><h4>Ice Bath</h4></div>
-                <div class="amenity-card"><span>🧘</span><h4>Pilates</h4></div>
-                <div class="amenity-card"><span>🥊</span><h4>MMA Zone</h4></div>
-                <div class="amenity-card"><span>☕</span><h4>Cafe Area</h4></div>
-            </div>
-        </section>
-
-        <section id="membership">
-            <h2 style="margin-bottom: 20px;">MEMBERSHIP</h2>
-            <div class="m-grid">
-                <div class="m-card">
-                    <div class="m-title">ANNUAL ELITE</div>
-                    <div class="m-price">₹24,999</div>
-                    <p style="font-size: 12px; color: #555;">All Access + Group Classes + BMI Test</p>
+        <section id="plans">
+            <h2 class="section-title">Select <span class="neon-text">Plan</span></h2>
+            <div class="contact-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3>Annual Elite</h3>
+                    <span class="neon-text" style="font-size: 24px; font-weight: 900;">₹19,999*</span>
                 </div>
-                <div class="m-card" style="border-color: var(--neon);">
-                    <div class="m-title">6 MONTHS</div>
-                    <div class="m-price">₹19,999</div>
-                    <p style="font-size: 12px; color: #555;">The perfect mid-term transformation plan.</p>
+                <p style="font-size: 12px; color: #666;">*Special Launch Price for Baner Residents.</p>
+                <ul style="margin: 15px 0; font-size: 14px; padding-left: 20px;">
+                    <li>24/7 Access</li>
+                    <li>Personalized Workout Plan</li>
+                    <li>Monthly BMI Analysis</li>
+                    <li>Access to MMA & Pilates Zone</li>
+                </ul>
+                <a href="#" class="cta-btn">CLAIM OPENING OFFER</a>
+            </div>
+
+            <div class="contact-card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3>3 Months Transformation</h3>
+                    <span style="font-size: 20px; font-weight: 900;">₹14,999</span>
                 </div>
+                <p style="font-size: 12px; color: #666;">Ideal for short-term goals.</p>
             </div>
         </section>
 
-        <section id="training">
-            <h2 style="margin-bottom: 20px;">PERSONAL <span style="color:var(--neon)">TRAINING</span></h2>
-            <div class="table-card">
-                <table>
-                    <thead><tr><th>DUR.</th><th>L-1</th><th>L-2</th><th>L-3</th></tr></thead>
-                    <tbody>
-                        <tr><td>1M</td><td class="price-text">10k</td><td class="price-text">12k</td><td class="price-text">15k</td></tr>
-                        <tr><td>3M</td><td class="price-text">27k</td><td class="price-text">32k</td><td class="price-text">40k</td></tr>
-                        <tr><td>12M</td><td class="price-text">90k</td><td class="price-text">100k</td><td class="price-text">120k</td></tr>
-                    </tbody>
-                </table>
+        <section id="contact">
+            <h2 class="section-title">Visit <span class="neon-text">Us</span></h2>
+            <div class="contact-card">
+                <p><strong>Location:</strong> Baner, Pune (Opposite [Landmark])</p>
+                <p><strong>Phone:</strong> +91 [Aapka Number]</p>
+                <p><strong>Email:</strong> info@taisopremium.com</p>
             </div>
+
+            <div class="map-box">
+                <iframe width="100%" height="100%" frameborder="0" style="border:0; border-radius: 15px;" src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Baner,Pune" allowfullscreen></iframe>
+            </div>
+
+            <a href="https://wa.me/91XXXXXXXXXX" class="cta-btn" style="background: #25d366; color: #fff;">WHATSAPP FOR INQUIRY</a>
         </section>
+
     </div>
 
 </body>
