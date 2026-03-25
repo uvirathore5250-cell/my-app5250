@@ -61,59 +61,54 @@
         #t3:checked ~ .main-view #membership,
         #t4:checked ~ .main-view #training { display: block; }
 
-        /* HERO SECTION */
         .presale-hero {
             background: var(--neon-glossy);
             background-size: 200% auto;
             animation: flow 4s linear infinite;
             color: #000; padding: 35px; border-radius: 20px;
-            text-align: center; margin-bottom: 30px; position: relative;
+            text-align: center; margin-bottom: 40px; position: relative;
         }
         .presale-hero h1 { font-size: 38px; font-weight: 900; margin-bottom: 5px; text-transform: uppercase; }
         
-        /* SEATS COUNTER */
-        .seats-counter {
-            background: #ff3333; color: #fff; padding: 8px 20px; border-radius: 50px;
-            display: inline-block; font-weight: 900; font-size: 14px; margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(255,51,51,0.4);
+        .seats-alert {
+            background: #000; color: #ff3333; padding: 5px 15px; border-radius: 50px;
+            font-weight: 900; font-size: 12px; display: inline-block; margin-bottom: 15px;
+            border: 1px solid #ff3333;
         }
 
         #reveal-check { display: none; }
-        .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; }
+        .reveal-label { background: #000; color: var(--neon); padding: 12px 25px; border-radius: 50px; font-weight: 900; cursor: pointer; display: inline-block; margin: 15px 0; transition: 0.3s; }
         
         .price-display { 
-            font-size: 50px; font-weight: 900; display: none; margin: 15px 0; 
+            font-size: 60px; font-weight: 900; display: none; margin: 15px 0; 
         }
 
         #reveal-check:checked ~ .price-reveal-box .reveal-label { display: none; }
         #reveal-check:checked ~ .price-reveal-box .price-display { display: block; }
 
-        /* MEMBERSHIP GRID */
-        .m-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
-        .m-card { background: #111; padding: 20px 15px; border-radius: 15px; border: 1px solid #222; text-align: center; position: relative; }
-        .m-title { font-size: 13px; font-weight: 800; color: #888; margin-bottom: 5px; text-transform: uppercase; }
-        .m-price { font-size: 24px; font-weight: 900; color: var(--neon); margin-bottom: 15px; }
-        .m-features { list-style: none; text-align: left; border-top: 1px solid #222; padding-top: 10px; }
-        .m-features li { font-size: 10px; color: #666; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
-        .m-card.featured { border-color: var(--neon); background: #161616; transform: scale(1.05); z-index: 10; }
+        .about-section h2 { font-size: 32px; font-weight: 900; margin-bottom: 15px; color: #fff; }
+        .about-section p { color: #bbb; line-height: 1.8; font-size: 16px; margin-bottom: 25px; }
+        .green-border-box { border-left: 5px solid var(--neon); padding-left: 25px; margin-bottom: 40px; }
+        
+        /* Membership List Table Style */
+        .table-card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #1a1a1a; color: var(--neon); padding: 12px; text-align: left; font-size: 11px; border-bottom: 2px solid #222; text-transform: uppercase; }
+        td { padding: 15px 12px; border-bottom: 1px solid #111; font-size: 14px; font-weight: 600; }
+        .price-text { color: var(--neon); font-weight: 800; }
 
-        /* AMENITIES */
         .cat-label { color: var(--neon); font-size: 14px; font-weight: 900; margin: 30px 0 15px; border-left: 4px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
-        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-        .amenity-card { background: #fff; color: #000; padding: 20px 10px; border-radius: 12px; text-align: center; border-bottom: 4px solid var(--neon); }
-        .amenity-card h4 { font-size: 11px; text-transform: uppercase; margin-top: 5px; font-weight: 800; }
+        
+        .amenity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+        .amenity-card { background: #fff; color: #000; padding: 25px 10px; border-radius: 15px; text-align: center; border-bottom: 5px solid var(--neon); }
+        .amenity-card h4 { font-size: 13px; text-transform: uppercase; margin-top: 8px; font-weight: 800; }
 
-        /* FOOTER */
-        .minimal-footer { padding: 50px 20px; text-align: center; border-top: 1px solid #111; margin-top: 40px; }
-        .footer-logo { font-size: 18px; font-weight: 900; opacity: 0.5; letter-spacing: 4px; }
+        .premium-footer { padding: 40px 20px; border-top: 1px solid #222; margin-top: 50px; text-align: center; opacity: 0.6; }
         
         .whatsapp-float {
             position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; text-decoration: none;
         }
-
-        .gym-status-badge { display: flex; align-items: center; gap: 10px; background: #161616; padding: 10px 20px; border-radius: 50px; width: fit-content; margin: 0 auto 20px; border: 1px solid #222; }
-        .status-dot { height: 8px; width: 8px; background: #25d366; border-radius: 50%; }
     </style>
 </head>
 <body>
@@ -126,99 +121,95 @@
     <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float">📲</a>
 
     <header>
-        <div class="logo">TAISO<span style="color:var(--neon)">.</span></div>
+        <div class="logo">TAISO<span style="color:var(--neon)">.</span> PREMIUM</div>
         <nav>
             <label for="t1" class="nav-btn">Home</label>
             <label for="t2" class="nav-btn">Amenities</label>
-            <label for="t3" class="nav-btn">Plans</label>
-            <label for="t4" class="nav-btn">PT</label>
+            <label for="t3" class="nav-btn">Memberships</label>
+            <label for="t4" class="nav-btn">Training</label>
         </nav>
     </header>
 
     <div class="main-view">
 
         <section id="home">
-            <div class="gym-status-badge">
-                <div class="status-dot"></div>
-                <span style="font-size: 10px; font-weight: 800; color: #888;">STATUS: <span style="color: #fff;">NOT CROWDED</span></span>
-            </div>
-
             <div class="presale-hero">
-                <div class="seats-counter">⚠️ ONLY 17 SEATS AVAILABLE</div>
-                <p style="font-weight: 800; font-size: 12px; text-transform: uppercase;">Baner Grand Opening Offer</p>
-                <h1>Elite Pass</h1>
+                <div class="seats-alert">⚠️ ONLY 17 SEATS AVAILABLE</div>
+                <p>Limited Time Grand Launch Offer</p>
+                <h1>Opening Offer</h1>
                 <input type="checkbox" id="reveal-check">
                 <div class="price-reveal-box">
-                    <label for="reveal-check" class="reveal-label">Reveal Launch Price</label>
+                    <label for="reveal-check" class="reveal-label">Click to Reveal Price</label>
                     <div class="price-display">₹19,999/-</div>
                 </div>
-                <p style="font-size: 11px;">Valid for the first 50 members only.</p>
+                <p>Annual Membership | Full 24/7 Access | All Facilities</p>
             </div>
 
-            <div class="green-border-box" style="border-left: 4px solid var(--neon); padding-left: 20px; margin-bottom: 30px;">
-                <h2 style="font-size: 24px; font-weight: 900;">Premium Fitness</h2>
-                <p style="color: #888; font-size: 14px; margin-top: 10px;">After Seawoods & Panvel, TAISO brings luxury training to Baner. 24/7 Access, Global Equipment, and Results-driven coaching.</p>
+            <div class="about-section">
+                <div class="green-border-box">
+                    <h2>From Seawoods & Panvel to Baner</h2>
+                    <p>After transforming thousands of lives in <b>Seawoods and Panvel</b>, TAISO Premium is now bringing its elite fitness experience to <b>Baner, Pune.</b></p>
+                </div>
+                <div class="green-border-box">
+                    <h2>Our Motive</h2>
+                    <p>Our goal in Baner is to provide a <b>Best-in-Class Premium Service</b>. We believe that fitness should be luxurious and result-driven.</p>
+                </div>
             </div>
         </section>
 
         <section id="amenities">
-            <h2 style="text-align: center; margin-bottom: 20px;">FACILITIES</h2>
+            <h2 style="text-align: center; margin-bottom: 20px;">PREMIUM AMENITIES</h2>
             <div class="amenity-grid">
-                <div class="amenity-card"><span>⚡</span><h4>Cardio</h4></div>
-                <div class="amenity-card"><span>💪</span><h4>Strength</h4></div>
-                <div class="amenity-card"><span>🧖</span><h4>Steam</h4></div>
-                <div class="amenity-card"><span>🧘</span><h4>Yoga</h4></div>
-                <div class="amenity-card"><span>🥊</span><h4>MMA</h4></div>
-                <div class="amenity-card"><span>🧊</span><h4>Ice Bath</h4></div>
+                <div class="amenity-card"><span>⚡</span><h4>Cardio & CrossFit</h4></div>
+                <div class="amenity-card"><span>💪</span><h4>Functional Training</h4></div>
+                <div class="amenity-card"><span>🧖🏻‍♂️</span><h4>Steam & Shower</h4></div>
+                <div class="amenity-card"><span>📊</span><h4>BMI & Fitness Test</h4></div>
+                <div class="amenity-card"><span>🧘</span><h4>Yoga & Zumba</h4></div>
+                <div class="amenity-card"><span>🧊</span><h4>Ice Bath Session</h4></div>
             </div>
         </section>
 
         <section id="membership">
-            <h2 style="text-align: center; margin-bottom: 10px;">MEMBERSHIP <span style="color:var(--neon)">PLANS</span></h2>
-            <div class="m-grid">
-                <div class="m-card">
-                    <div class="m-title">1 Month</div>
-                    <div class="m-price">₹5,999</div>
-                    <ul class="m-features"><li>Gym Access</li><li>Steam Bath</li></ul>
-                </div>
-                <div class="m-card">
-                    <div class="m-title">3 Months</div>
-                    <div class="m-price">₹12,999</div>
-                    <ul class="m-features"><li>Gym Access</li><li>Steam Bath</li><li>Workout Plan</li></ul>
-                </div>
-                <div class="m-card">
-                    <div class="m-title">6 Months</div>
-                    <div class="m-price">₹17,999</div>
-                    <ul class="m-features"><li>Gym Access</li><li>Steam Bath</li><li>Diet Consultation</li></ul>
-                </div>
-                <div class="m-card featured">
-                    <div style="background: var(--neon); color: #000; font-size: 8px; font-weight: 900; padding: 2px 8px; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); border-radius: 5px;">MOST POPULAR</div>
-                    <div class="m-title" style="color:#fff">12 Months</div>
-                    <div class="m-price">₹24,999</div>
-                    <ul class="m-features"><li>24/7 Access</li><li>All Amenities</li><li>Priority Support</li></ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="training">
-            <h2 style="margin-bottom: 20px; text-align: center;">PERSONAL <span style="color:var(--neon)">TRAINING</span></h2>
-            <div style="background: #111; padding: 15px; border-radius: 15px; border: 1px solid #222;">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead><tr style="color:var(--neon); font-size: 10px; border-bottom: 1px solid #222;"><th style="padding: 10px; text-align: left;">TERM</th><th>LVL 1</th><th>LVL 2</th></tr></thead>
-                    <tbody style="font-size: 13px; text-align: center;">
-                        <tr style="border-bottom: 1px solid #111;"><td style="padding: 15px 10px; text-align: left;">1 Month</td><td>10K</td><td>12K</td></tr>
-                        <tr style="border-bottom: 1px solid #111;"><td style="padding: 15px 10px; text-align: left;">3 Months</td><td>27K</td><td>32K</td></tr>
-                        <tr style="border-bottom: 1px solid #111;"><td style="padding: 15px 10px; text-align: left;">12 Months</td><td>90K</td><td>100K</td></tr>
+            <h2 style="text-align: center; margin-bottom: 20px;">MEMBERSHIP PLANS</h2>
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DURATION</th>
+                            <th>BENEFITS</th>
+                            <th>PRICE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1 Month</td><td>Gym + Steam + BMI</td><td class="price-text">₹5,999</td></tr>
+                        <tr><td>3 Months</td><td>Gym + Classes + Steam</td><td class="price-text">₹12,999</td></tr>
+                        <tr><td>6 Months</td><td>Gym + Diet + All Access</td><td class="price-text">₹17,999</td></tr>
+                        <tr style="background: #1a1a1a;"><td>12 Months</td><td>24/7 Access + All Facilities</td><td class="price-text">₹24,999</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <div class="minimal-footer">
-            <div class="footer-logo">TAISO PREMIUM</div>
-            <p style="font-size: 10px; color: #444; margin-top: 15px; text-transform: uppercase; letter-spacing: 2px;">Baner • Seawoods • Panvel</p>
-        </div>
+        <section id="training">
+            <h2 style="margin-bottom: 20px; text-align: center;">PERSONAL TRAINING</h2>
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr><th>TERM</th><th>LEVEL 1</th><th>LEVEL 2</th><th>LEVEL 3</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1 Month</td><td class="price-text">10,000</td><td class="price-text">12,000</td><td class="price-text">15,000</td></tr>
+                        <tr><td>3 Months</td><td class="price-text">27,000</td><td class="price-text">32,000</td><td class="price-text">40,000</td></tr>
+                        <tr><td>12 Months</td><td class="price-text">90,000</td><td class="price-text">100,000</td><td class="price-text">120,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
+        <div class="premium-footer">
+            <div class="logo" style="margin-bottom: 10px;">TAISO PREMIUM</div>
+            <p style="font-size: 12px;">BANER • SEAWOODS • PANVEL</p>
+        </div>
     </div>
 
 </body>
