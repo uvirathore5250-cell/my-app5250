@@ -6,40 +6,31 @@
 <title>TAISO Premium - Baner Launch</title>
 
 <style>
-:root { 
---neon: #92d050; 
---bg: #050505; 
---card: #121212; 
---text: #eee; 
---glass: rgba(255,255,255,0.04);
-}
+:root{--neon:#92d050;--bg:#050505;--glass:rgba(255,255,255,0.05);--border:#222;--text:#eee}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:radial-gradient(circle at top,#0a0a0a,#000);color:var(--text);overflow:hidden}
 
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
-body { 
-background: radial-gradient(circle at top,#0a0a0a,#000);
-color:var(--text);
-overflow:hidden;
-}
+/* TABS */
+input[type="radio"]{display:none}
 
-/* HEADER */
-header {
-background: rgba(0,0,0,0.6);
-backdrop-filter: blur(10px);
-padding: 15px;
-position: fixed;
-width: 100%;
+header{
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+padding:15px;
+position:fixed;
+width:100%;
+top:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
-border-bottom:1px solid #222;
+border-bottom:1px solid var(--border);
 z-index:1000;
 }
 
-.logo { font-weight:900; letter-spacing:2px; }
+.logo{font-weight:900;letter-spacing:2px}
+nav{display:flex;gap:6px;overflow-x:auto}
 
-nav { display:flex; gap:6px; overflow-x:auto; }
-
-.nav-btn {
+.nav-btn{
 background:var(--glass);
 color:#888;
 padding:8px 14px;
@@ -47,66 +38,62 @@ border-radius:20px;
 cursor:pointer;
 font-size:10px;
 font-weight:800;
-border:1px solid #222;
+border:1px solid var(--border);
 transition:.3s;
+white-space:nowrap;
 }
 
-.nav-btn:hover {
-background:var(--neon);
-color:#000;
-transform:scale(1.05);
-}
+.nav-btn:hover{background:var(--neon);color:#000}
 
-/* ACTIVE TAB */
+/* ACTIVE */
 #t1:checked ~ header label[for="t1"],
 #t2:checked ~ header label[for="t2"],
 #t3:checked ~ header label[for="t3"],
-#t4:checked ~ header label[for="t4"] {
-background: var(--neon);
+#t4:checked ~ header label[for="t4"]{
+background:var(--neon);
 color:#000;
 }
 
 /* MAIN */
-.main-view {
+.main-view{
 margin-top:70px;
 height:calc(100vh - 70px);
 overflow-y:auto;
 padding:20px;
 }
 
-section { display:none; animation:fade .5s; max-width:900px; margin:auto; }
-@keyframes fade { from{opacity:0;transform:translateY(20px)} to{opacity:1} }
+section{display:none;animation:fade .4s ease;max-width:900px;margin:auto}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
 
-#t1:checked ~ .main-view #home,
-#t2:checked ~ .main-view #amenities,
-#t3:checked ~ .main-view #membership,
-#t4:checked ~ .main-view #training { display:block; }
+#t1:checked ~ .main-view #home{display:block}
+#t2:checked ~ .main-view #amenities{display:block}
+#t3:checked ~ .main-view #membership{display:block}
+#t4:checked ~ .main-view #training{display:block}
 
 /* HERO */
-.presale-hero {
-background: linear-gradient(135deg,#92d05020,#ffffff10);
-backdrop-filter: blur(20px);
+.presale-hero{
+background:linear-gradient(135deg,#92d05020,#ffffff10);
+backdrop-filter:blur(20px);
+border:1px solid var(--border);
 padding:35px;
 border-radius:20px;
 text-align:center;
 margin-bottom:30px;
-border:1px solid #222;
 }
 
-.presale-hero h1 { font-size:36px; font-weight:900; }
+.presale-hero h1{font-size:36px;font-weight:900}
+.old-price{text-decoration:line-through;opacity:.6}
 
-.old-price { text-decoration:line-through; opacity:0.6; }
-
-.price-display {
+.price-display{
 font-size:60px;
 font-weight:900;
 color:var(--neon);
 display:none;
 animation:pop 1.2s infinite;
 }
-@keyframes pop { 50% { transform:scale(1.1);} }
+@keyframes pop{50%{transform:scale(1.1)}}
 
-.reveal-label {
+.reveal-label{
 background:#000;
 color:var(--neon);
 padding:12px 25px;
@@ -114,14 +101,15 @@ border-radius:30px;
 cursor:pointer;
 font-weight:900;
 border:1px solid var(--neon);
+display:inline-block;
+margin-top:10px;
 }
 
-#reveal-check { display:none; }
-#reveal-check:checked ~ .price-reveal-box .reveal-label { display:none; }
-#reveal-check:checked ~ .price-reveal-box .price-display { display:block; }
+#reveal-check{display:none}
+#reveal-check:checked ~ .price-reveal-box .reveal-label{display:none}
+#reveal-check:checked ~ .price-reveal-box .price-display{display:block}
 
-/* CTA */
-.cta-btn {
+.cta-btn{
 margin-top:20px;
 background:var(--neon);
 color:#000;
@@ -132,95 +120,63 @@ font-weight:900;
 cursor:pointer;
 transition:.3s;
 }
-.cta-btn:hover { transform:scale(1.07); }
+.cta-btn:hover{transform:scale(1.08)}
 
-/* TEXT */
-.green-border-box {
+/* CONTENT */
+.green-box{
 border-left:4px solid var(--neon);
 padding-left:20px;
 margin-bottom:25px;
 }
 
-/* GRID */
-.usp-grid {
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
-.usp-card {
-background:var(--glass);
-border:1px solid #222;
-padding:20px;
-border-radius:15px;
-transition:.3s;
-}
-.usp-card:hover {
-transform:translateY(-5px);
-box-shadow:0 0 20px #92d05033;
-}
-
-/* AMENITIES */
-.cat-label {
-color:var(--neon);
-font-weight:900;
-margin:20px 0 10px;
-}
-
-.amenity-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 gap:12px;
 }
 
-.amenity-card {
-background:#fff;
-color:#000;
-padding:20px;
+.card{
+background:var(--glass);
+border:1px solid var(--border);
+padding:15px;
 border-radius:12px;
 text-align:center;
-font-weight:800;
-border-bottom:4px solid var(--neon);
+font-size:13px;
 transition:.3s;
 }
-.amenity-card:hover {
-transform:scale(1.05);
+.card:hover{transform:translateY(-5px);box-shadow:0 0 15px #92d05033}
+
+/* AMENITIES */
+.amenity{
+background:#fff;
+color:#000;
+padding:15px;
+border-radius:10px;
+font-weight:800;
+border-bottom:4px solid var(--neon);
 }
 
 /* MEMBERSHIP */
-.m-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
-.m-card {
+.plan{
 background:var(--glass);
-border:1px solid #222;
-padding:25px;
-border-radius:15px;
-text-align:center;
-position:relative;
-}
-
-.m-price {
-font-size:30px;
-color:var(--neon);
-font-weight:900;
-}
-
-/* TABLE */
-.table-card {
-background:var(--card);
+border:1px solid var(--border);
 padding:20px;
 border-radius:12px;
-border:1px solid #222;
-margin-bottom:20px;
+text-align:center;
 }
+.plan .price{font-size:26px;color:var(--neon);font-weight:900}
 
-table { width:100%; border-collapse:collapse; }
-td, th { padding:10px; border-bottom:1px solid #222; }
-.price-text { color:var(--neon); font-weight:800; }
+/* TABLE */
+.table{
+background:var(--glass);
+border:1px solid var(--border);
+padding:15px;
+border-radius:10px;
+margin-top:10px;
+}
+table{width:100%;border-collapse:collapse}
+td{padding:10px;border-bottom:1px solid #222}
+.highlight{color:var(--neon);font-weight:800}
 </style>
 </head>
 
@@ -236,16 +192,17 @@ td, th { padding:10px; border-bottom:1px solid #222; }
 <nav>
 <label for="t1" class="nav-btn">Home</label>
 <label for="t2" class="nav-btn">Amenities</label>
-<label for="t3" class="nav-btn">Memberships</label>
+<label for="t3" class="nav-btn">Membership</label>
 <label for="t4" class="nav-btn">Training</label>
 </nav>
 </header>
 
 <div class="main-view">
 
+<!-- HOME -->
 <section id="home">
 <div class="presale-hero">
-<p>Limited Time Grand Launch Offer</p>
+<p>Limited Time Launch Offer</p>
 <h1>Opening Offer</h1>
 <div class="old-price">₹24,999</div>
 
@@ -256,24 +213,76 @@ td, th { padding:10px; border-bottom:1px solid #222; }
 </div>
 
 <p style="margin-top:10px;font-weight:700;">⚠️ Only First 100 Members</p>
-
 <button class="cta-btn">JOIN NOW / BOOK VISIT</button>
 </div>
 
-<div class="green-border-box">
+<div class="green-box">
 <h2>From Seawoods & Panvel to Baner</h2>
-<p>After transforming thousands of lives, TAISO Premium brings elite fitness to Baner. This is not just a gym — this is a premium lifestyle experience.</p>
+<p>TAISO Premium now brings elite fitness experience to Baner. This is not just a gym — this is a premium lifestyle.</p>
 </div>
 
-<div class="usp-grid">
-<div class="usp-card">Ultra Premium Equipment</div>
-<div class="usp-card">24/7 Access</div>
-<div class="usp-card">Expert Trainers</div>
-<div class="usp-card">Steam & Recovery</div>
+<div class="grid">
+<div class="card">Ultra Premium Equipment</div>
+<div class="card">24/7 Access</div>
+<div class="card">Expert Trainers</div>
+<div class="card">Steam & Recovery</div>
 </div>
 </section>
 
-<!-- BAQI TERA SAME STRUCTURE RAHEGA -->
+<!-- AMENITIES -->
+<section id="amenities">
+<h2>Included in Membership</h2>
+<div class="grid">
+<div class="amenity">Cardio</div>
+<div class="amenity">CrossFit</div>
+<div class="amenity">Workout Plan</div>
+<div class="amenity">Steam</div>
+<div class="amenity">Zumba</div>
+<div class="amenity">Yoga</div>
+</div>
+
+<h2 style="margin-top:20px;color:#ffcc00">Upgrade Services</h2>
+<div class="grid">
+<div class="amenity" style="border-color:#ffcc00">Ice Bath</div>
+<div class="amenity" style="border-color:#ffcc00">MMA</div>
+<div class="amenity" style="border-color:#ffcc00">Pilates</div>
+<div class="amenity" style="border-color:#ffcc00">PT Studio</div>
+</div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section id="membership">
+<div class="grid">
+<div class="plan"><h3>1 Month</h3><div class="price">₹5,999</div></div>
+<div class="plan"><h3>3 Months</h3><div class="price">₹14,999</div></div>
+<div class="plan"><h3>6 Months ⭐</h3><div class="price">₹19,999</div></div>
+<div class="plan"><h3>12 Months 🔥</h3><div class="price">₹24,999</div></div>
+</div>
+</section>
+
+<!-- TRAINING -->
+<section id="training">
+<h2>Personal Training</h2>
+<div class="table">
+<table>
+<tr><td>1 Month</td><td class="highlight">₹10,000</td></tr>
+<tr><td>3 Months</td><td class="highlight">₹27,000</td></tr>
+<tr><td>6 Months</td><td class="highlight">₹50,000</td></tr>
+<tr><td>12 Months</td><td class="highlight">₹90,000</td></tr>
+</table>
+</div>
+
+<h2 style="margin-top:20px">Group Classes</h2>
+<div class="table">
+<table>
+<tr><td>Pilates</td><td class="highlight">₹18,000</td></tr>
+<tr><td>MMA</td><td class="highlight">₹3,000</td></tr>
+<tr><td>Yoga</td><td class="highlight">₹3,000</td></tr>
+<tr><td>Zumba</td><td class="highlight">₹3,000</td></tr>
+</table>
+</div>
+</section>
+
 </div>
 
 </body>
