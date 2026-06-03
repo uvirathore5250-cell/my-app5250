@@ -17,36 +17,24 @@
         body { background: var(--bg); color: var(--text); overflow-x: hidden; }
         input[type="radio"] { display: none; }
         
-        header {
-            background: #000; padding: 15px; position: fixed; top: 0; width: 100%;
-            z-index: 1000; border-bottom: 2px solid var(--neon);
-            display: flex; justify-content: space-between; align-items: center;
-        }
+        header { background: #000; padding: 15px; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 2px solid var(--neon); display: flex; justify-content: space-between; align-items: center; }
         .logo { font-weight: 900; color: #fff; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
         nav { display: flex; gap: 8px; }
-        .nav-btn {
-            background: #1a1a1a; color: #aaa; padding: 8px 16px; border-radius: 20px;
-            cursor: pointer; font-size: 11px; font-weight: 800; text-transform: uppercase;
-            border: 1px solid #333; transition: 0.3s;
-        }
+        .nav-btn { background: #1a1a1a; color: #aaa; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 800; text-transform: uppercase; border: 1px solid #333; transition: 0.3s; }
         
-        #t1:checked ~ header nav label[for="t1"],
-        #t2:checked ~ header nav label[for="t2"],
-        #t3:checked ~ header nav label[for="t3"] {
-            background: var(--neon-glossy); background-size: 200% auto; animation: flow 3s linear infinite; color: #000; border-color: var(--neon);
-        }
+        #t1:checked ~ header nav label[for="t1"], #t2:checked ~ header nav label[for="t2"], #t3:checked ~ header nav label[for="t3"] { background: var(--neon-glossy); background-size: 200% auto; animation: flow 3s linear infinite; color: #000; border-color: var(--neon); }
         
         .main-view { margin-top: 85px; padding: 20px; }
         section { display: none; max-width: 900px; margin: 0 auto; animation: fadeIn 0.4s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        #t1:checked ~ .main-view #home, 
-        #t2:checked ~ .main-view #membership, 
-        #t3:checked ~ .main-view #training { display: block; }
+        #t1:checked ~ .main-view #home, #t2:checked ~ .main-view #membership, #t3:checked ~ .main-view #training { display: block; }
         
         /* HOME PAGE DESIGN */
-        .hero-card { background: var(--neon-glossy); background-size: 200% auto; animation: flow 4s linear infinite; color: #000; padding: 45px 20px; border-radius: 20px; text-align: center; margin-bottom: 25px; }
-        .hero-card h1 { font-size: 42px; font-weight: 900; margin: 5px 0; }
+        .hero-card { background: #1a1a1a; padding: 45px 20px; border-radius: 20px; text-align: center; margin-bottom: 25px; border: 1px solid #333; }
+        #price-tag { font-size: 42px; font-weight: 900; margin: 15px 0; display: none; color: var(--neon); }
+        .offer-btn { background: var(--neon-glossy); padding: 15px 30px; border-radius: 50px; color: #000; font-weight: 900; cursor: pointer; display: inline-block; transition: 0.3s; border: none; font-size: 16px; margin: 15px 0; }
+        .offer-btn:hover { opacity: 0.9; }
+        
         .bullet-list { background: #111; padding: 25px; border-radius: 15px; border-left: 5px solid var(--neon); margin-bottom: 20px; list-style-type: none; }
         .bullet-list li { font-size: 14px; color: #eee; padding: 6px 0; font-weight: 500; }
         .bullet-list li::before { content: "● "; color: var(--neon); margin-right: 8px; }
@@ -65,7 +53,7 @@
         .service-list li { font-size: 12px; color: #bbb; padding: 7px 0; border-bottom: 1px solid #1a1a1a; }
         .service-list li::before { content: "✓ "; color: var(--neon); font-weight: bold; }
 
-        /* TABLES FOR PT & MORE */
+        /* TABLES */
         .table-container { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 25px; overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; min-width: 400px; }
         th { text-align: left; padding: 12px; color: var(--neon); font-size: 11px; text-transform: uppercase; border-bottom: 2px solid #222; }
@@ -91,125 +79,39 @@
     </header>
 
     <div class="main-view">
-        
-        <!-- HOME PAGE (FIXED WITH IMAGE DATA & OFFER) -->
         <section id="home">
             <div class="hero-card">
                 <p style="font-weight: 800; letter-spacing: 1px;">LIMITED PERIOD OFFER</p>
-                <h1>₹17,499/-</h1>
+                <button class="offer-btn" id="btn-reveal" onclick="document.getElementById('btn-reveal').style.display='none'; document.getElementById('price-tag').style.display='block';">CLICK TO VIEW OFFER PRICE</button>
+                <h1 id="price-tag">₹17,499/-</h1>
                 <p style="font-weight: 700; letter-spacing: 0.5px;">ANNUAL GYM MEMBERSHIP</p>
             </div>
-
             <ul class="bullet-list">
                 <li>One of the most Premium Gym in Vashi vicinity.</li>
                 <li>State of Art Equipment.</li>
                 <li>Paid Lockers Available.</li>
                 <li>Parking available.</li>
-                <li>Qualified and Experienced Personal Trainers (Male & Female).</li>
-                <li>Family Friendly.</li>
-                <li>Working 365 days.</li>
             </ul>
-
-            <div class="info-box">
-                <h3>OPERATIONAL TIMING</h3>
-                <p><b>MON - SAT :</b> <span style="color: var(--neon);">5:30 AM TO 11:30 PM</span><br><b>SUNDAY :</b> <span style="color: var(--neon);">9 AM TO 10 PM</span></p>
-            </div>
-
-            <div class="info-box" style="border-color: #fff;">
-                <h3>CURRENT BRANCHES :</h3>
-                <p style="color: var(--neon); font-weight: 700; letter-spacing: 1px;">CHEMBUR & ULWE</p>
-            </div>
         </section>
 
-        <!-- MEMBERSHIP PAGE (UNCHANGED CARDS) -->
         <section id="membership">
             <div class="plan-grid">
-                <div class="plan-card">
-                    <div class="plan-header"><h3>1 MONTH</h3><div class="price">6,000/-</div></div>
-                    <ul class="service-list">
-                        <li>Cardio Section</li><li>Strength/Weight Section</li><li>Dumbbell Section</li><li>Functional Training</li><li>Body Composition Analysis</li><li>Basic Workout Plan</li><li>Temporary Lockers</li><li>Steam & Shower</li><li>General Trainers</li>
-                    </ul>
-                </div>
-                <div class="plan-card">
-                    <div class="plan-header"><h3>3 MONTHS</h3><div class="price">15,000/-</div></div>
-                    <ul class="service-list">
-                        <li>Cardio Section</li><li>Strength/Weight Section</li><li>Dumbbell Section</li><li>Functional Training</li><li>Body Composition Analysis</li><li>Basic Workout Plan</li><li>Temporary Lockers</li><li>Steam & Shower</li><li>3 Days Free Trial with Personal Trainers</li>
-                    </ul>
-                </div>
-                <div class="plan-card">
-                    <div class="plan-header"><h3>6 MONTHS</h3><div class="price">18,000/-</div></div>
-                    <ul class="service-list">
-                        <li>Cardio Section</li><li>Strength/Weight Section</li><li>Dumbbell Section</li><li>Functional Training</li><li>Body Composition Analysis</li><li>Basic Workout Plan</li><li>Temporary Lockers</li><li>Steam & Shower</li><li>3 Days Free Trial with Personal Trainers</li>
-                    </ul>
-                </div>
-                <div class="plan-card" style="border-top-color: #fff;">
-                    <div class="plan-header"><h3>1 YEAR</h3><div class="price">25,000/-</div></div>
-                    <ul class="service-list">
-                        <li>Cardio Section</li><li>Strength/Weight Section</li><li>Dumbbell Section</li><li>Functional Training</li><li>Body Composition Analysis</li><li>Basic Workout Plan</li><li>Temporary Lockers</li><li>Steam & Shower</li><li>3 Days Free Trial with Personal Trainers</li>
-                        <li style="color:var(--neon); font-weight:800;">KENZO FITNESS DUFFLE BAG</li>
-                    </ul>
-                </div>
+                <div class="plan-card"><div class="plan-header"><h3>1 MONTH</h3><div class="price">6,000/-</div></div></div>
+                <div class="plan-card"><div class="plan-header"><h3>1 YEAR</h3><div class="price">25,000/-</div></div></div>
             </div>
         </section>
 
-        <!-- PT & MORE PAGE (FIXED FULL DATA TABLES) -->
         <section id="training">
-            <h2 class="sec-title">Personal <span style="color:var(--neon)">Training</span></h2>
-            <div class="table-container">
-                <table>
-                    <thead><tr><th>Package</th><th>Sessions</th><th>Rates</th></tr></thead>
-                    <tbody>
-                        <tr><td>1 Month</td><td>12 Sessions</td><td class="highlight">12,000</td></tr>
-                        <tr><td>3 Months</td><td>36 Sessions</td><td class="highlight">32,000</td></tr>
-                        <tr><td>6 Months</td><td>72 Sessions</td><td class="highlight">58,000</td></tr>
-                        <tr><td>1 Year</td><td>144 Sessions</td><td class="highlight">1,05,000</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 class="sec-title">Combo <span style="color:var(--neon)">Package</span></h2>
+            <h2 class="sec-title">Personal Training</h2>
             <div class="table-container">
                 <table>
                     <thead><tr><th>Package</th><th>Rates</th></tr></thead>
-                    <tbody>
-                        <tr><td>1 Year Gym + 1 M PT</td><td class="highlight">30,000</td></tr>
-                        <tr><td>1 Year Gym + 3 M PT</td><td class="highlight">50,000</td></tr>
-                        <tr><td>1 Year Gym + 6 M PT</td><td class="highlight">70,000</td></tr>
-                        <tr><td>1 Year Gym + 12 M PT</td><td class="highlight">1,10,000</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 class="sec-title">Pilates <span style="color:var(--neon)">Studio</span></h2>
-            <div class="table-container">
-                <table>
-                    <thead><tr><th>Package</th><th>Sessions</th><th>Rates</th></tr></thead>
-                    <tbody>
-                        <tr><td>1 Day</td><td>1 Session</td><td class="highlight">1,800</td></tr>
-                        <tr><td>1 Month</td><td>12 Sessions</td><td class="highlight">21,240</td></tr>
-                        <tr><td>3 Months</td><td>24 Sessions</td><td class="highlight">38,940</td></tr>
-                        <tr><td>6 Months</td><td>36 Sessions</td><td class="highlight">53,100</td></tr>
-                        <tr><td>1 Year</td><td>72 Sessions</td><td class="highlight">1,00,300</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h2 class="sec-title">Freelancing <span style="color:var(--neon)">Package</span></h2>
-            <div class="table-container">
-                <table>
-                    <thead><tr><th>Package</th><th>Sessions</th><th>Rates</th></tr></thead>
-                    <tbody>
-                        <tr><td>1 Month</td><td>12 Sessions</td><td class="highlight">5,000</td></tr>
-                        <tr><td>3 Months</td><td>36 Sessions</td><td class="highlight">13,500</td></tr>
-                        <tr><td>6 Months</td><td>72 Sessions</td><td class="highlight">24,000</td></tr>
-                        <tr><td>1 Year</td><td>144 Sessions</td><td class="highlight">42,000</td></tr>
-                    </tbody>
+                    <tbody><tr><td>1 Year Gym + 12 M PT</td><td class="highlight">1,10,000</td></tr></tbody>
                 </table>
             </div>
         </section>
-
+        
         <div class="footer">CHEMBUR • ULWE • VASHI</div>
     </div>
-
 </body>
 </html>
