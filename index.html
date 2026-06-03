@@ -5,113 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KENZO FITNESS - Premium Gym</title>
     <style>
-        :root { 
-            --neon: #92d050; 
-            --neon-glossy: linear-gradient(90deg, #92d050 0%, #d4ffaa 50%, #92d050 100%);
-            --bg: #050505; 
-            --card: #121212; 
-            --text: #eee; 
-        }
-        @keyframes flow { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        :root { --neon: #92d050; --neon-glossy: linear-gradient(90deg, #92d050 0%, #d4ffaa 50%, #92d050 100%); --bg: #050505; --card: #121212; --text: #eee; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
-        input[type="radio"] { display: none; }
+        body { background: var(--bg); color: var(--text); }
+        header { background: #000; padding: 15px; position: fixed; top: 0; width: 100%; border-bottom: 2px solid var(--neon); display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        .logo { font-weight: 900; color: #fff; font-size: 18px; text-transform: uppercase; }
+        .main-view { margin-top: 80px; padding: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
         
-        header { background: #000; padding: 15px; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 2px solid var(--neon); display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 900; color: #fff; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
-        nav { display: flex; gap: 8px; }
-        .nav-btn { background: #1a1a1a; color: #aaa; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 800; text-transform: uppercase; border: 1px solid #333; transition: 0.3s; }
+        /* HOME PAGE */
+        .hero-card { background: #1a1a1a; padding: 40px; border-radius: 20px; text-align: center; border: 1px solid #333; margin-bottom: 20px; }
+        #price-tag { font-size: 45px; color: var(--neon); font-weight: 900; margin: 15px 0; display: none; }
+        .offer-btn { background: var(--neon-glossy); padding: 15px 30px; border-radius: 50px; font-weight: 900; cursor: pointer; border: none; }
         
-        #t1:checked ~ header nav label[for="t1"], #t2:checked ~ header nav label[for="t2"], #t3:checked ~ header nav label[for="t3"] { background: var(--neon-glossy); background-size: 200% auto; animation: flow 3s linear infinite; color: #000; border-color: var(--neon); }
-        
-        .main-view { margin-top: 85px; padding: 20px; }
-        section { display: none; max-width: 900px; margin: 0 auto; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        #t1:checked ~ .main-view #home, #t2:checked ~ .main-view #membership, #t3:checked ~ .main-view #training { display: block; }
-        
-        /* HOME PAGE DESIGN */
-        .hero-card { background: #1a1a1a; padding: 45px 20px; border-radius: 20px; text-align: center; margin-bottom: 25px; border: 1px solid #333; }
-        #price-tag { font-size: 42px; font-weight: 900; margin: 15px 0; display: none; color: var(--neon); }
-        .offer-btn { background: var(--neon-glossy); padding: 15px 30px; border-radius: 50px; color: #000; font-weight: 900; cursor: pointer; display: inline-block; transition: 0.3s; border: none; font-size: 16px; margin: 15px 0; }
-        .offer-btn:hover { opacity: 0.9; }
-        
-        .bullet-list { background: #111; padding: 25px; border-radius: 15px; border-left: 5px solid var(--neon); margin-bottom: 20px; list-style-type: none; }
-        .bullet-list li { font-size: 14px; color: #eee; padding: 6px 0; font-weight: 500; }
-        .bullet-list li::before { content: "● "; color: var(--neon); margin-right: 8px; }
-        
-        .info-box { background: #111; padding: 20px; border-radius: 15px; border-left: 5px solid var(--neon); margin-bottom: 20px; }
-        .info-box h3 { color: var(--neon); font-size: 14px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .info-box p { font-size: 14px; color: #bbb; line-height: 1.6; }
-
-        /* MEMBERSHIP CARDS */
-        .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .plan-card { background: var(--card); border: 1px solid #222; border-radius: 15px; overflow: hidden; border-top: 4px solid var(--neon); }
-        .plan-header { background: #161616; padding: 20px; text-align: center; border-bottom: 1px solid #222; }
-        .plan-header h3 { font-size: 20px; color: #fff; margin-bottom: 5px; }
-        .plan-header .price { font-size: 32px; font-weight: 900; color: var(--neon); }
-        .service-list { list-style: none; padding: 20px; }
-        .service-list li { font-size: 12px; color: #bbb; padding: 7px 0; border-bottom: 1px solid #1a1a1a; }
-        .service-list li::before { content: "✓ "; color: var(--neon); font-weight: bold; }
-
-        /* TABLES */
-        .table-container { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 25px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; min-width: 400px; }
-        th { text-align: left; padding: 12px; color: var(--neon); font-size: 11px; text-transform: uppercase; border-bottom: 2px solid #222; }
-        td { padding: 12px; border-bottom: 1px solid #111; font-size: 14px; }
-        .highlight { color: var(--neon); font-weight: 800; }
-        .sec-title { text-align: center; margin: 30px 0 15px; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
-        .footer { text-align: center; padding: 35px; opacity: 0.4; font-size: 12px; letter-spacing: 2px; }
+        /* CARDS & TABLES */
+        .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .plan-card { background: var(--card); border: 1px solid #222; padding: 20px; border-radius: 10px; border-top: 3px solid var(--neon); }
+        .table-container { background: var(--card); padding: 15px; border-radius: 10px; margin-bottom: 20px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border-bottom: 1px solid #222; text-align: left; }
+        th { color: var(--neon); }
     </style>
 </head>
 <body>
 
-    <input type="radio" name="tabs" id="t1" checked>
-    <input type="radio" name="tabs" id="t2">
-    <input type="radio" name="tabs" id="t3">
-
-    <header>
-        <div class="logo">KENZO FITNESS</div>
-        <nav>
-            <label for="t1" class="nav-btn">Home</label>
-            <label for="t2" class="nav-btn">Membership</label>
-            <label for="t3" class="nav-btn">PT & More</label>
-        </nav>
-    </header>
+    <header><div class="logo">KENZO FITNESS</div></header>
 
     <div class="main-view">
         <section id="home">
             <div class="hero-card">
-                <p style="font-weight: 800; letter-spacing: 1px;">LIMITED PERIOD OFFER</p>
+                <h3>LIMITED PERIOD OFFER</h3>
                 <button class="offer-btn" id="btn-reveal" onclick="document.getElementById('btn-reveal').style.display='none'; document.getElementById('price-tag').style.display='block';">CLICK TO VIEW OFFER PRICE</button>
-                <h1 id="price-tag">₹17,499/-</h1>
-                <p style="font-weight: 700; letter-spacing: 0.5px;">ANNUAL GYM MEMBERSHIP</p>
+                <div id="price-tag">₹17,499/-</div>
+                <p>ANNUAL GYM MEMBERSHIP</p>
             </div>
-            <ul class="bullet-list">
-                <li>One of the most Premium Gym in Vashi vicinity.</li>
-                <li>State of Art Equipment.</li>
-                <li>Paid Lockers Available.</li>
-                <li>Parking available.</li>
+            <ul>
+                <li>Premium Gym in Vashi</li>
+                <li>State of Art Equipment</li>
+                <li>Qualified Personal Trainers</li>
+                <li>Working 365 days</li>
             </ul>
         </section>
 
-        <section id="membership">
-            <div class="plan-grid">
-                <div class="plan-card"><div class="plan-header"><h3>1 MONTH</h3><div class="price">6,000/-</div></div></div>
-                <div class="plan-card"><div class="plan-header"><h3>1 YEAR</h3><div class="price">25,000/-</div></div></div>
-            </div>
-        </section>
+        <h2>Membership Plans</h2>
+        <div class="plan-grid">
+            <div class="plan-card"><h3>1 Month</h3><p>6,000/-</p></div>
+            <div class="plan-card"><h3>3 Months</h3><p>15,000/-</p></div>
+            <div class="plan-card"><h3>6 Months</h3><p>18,000/-</p></div>
+            <div class="plan-card"><h3>1 Year</h3><p>25,000/-</p></div>
+        </div>
 
-        <section id="training">
-            <h2 class="sec-title">Personal Training</h2>
-            <div class="table-container">
-                <table>
-                    <thead><tr><th>Package</th><th>Rates</th></tr></thead>
-                    <tbody><tr><td>1 Year Gym + 12 M PT</td><td class="highlight">1,10,000</td></tr></tbody>
-                </table>
-            </div>
-        </section>
-        
-        <div class="footer">CHEMBUR • ULWE • VASHI</div>
+        <h2>Personal Training</h2>
+        <div class="table-container">
+            <table>
+                <tr><th>Package</th><th>Sessions</th><th>Rates</th></tr>
+                <tr><td>1 Month</td><td>12</td><td>12,000</td></tr>
+                <tr><td>3 Months</td><td>36</td><td>32,000</td></tr>
+                <tr><td>6 Months</td><td>72</td><td>58,000</td></tr>
+                <tr><td>1 Year</td><td>144</td><td>1,05,000</td></tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>
